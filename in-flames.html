@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In Flames — Alias4us</title>
+<meta name="description" content="In Flames — listen and read the lyrics. Alias4us, rock duo: original lyrics, music and arrangements by FX and Fenni.">
+
+<meta property="og:title" content="In Flames — Alias4us">
+<meta property="og:description" content="Listen and read the lyrics.">
+<meta property="og:type" content="music.song">
+<meta property="og:url" content="https://alias4us.github.io/in-flames.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#0B1C31;
+  --ink:#EDEEF2;
+  --panel:#16304F;
+  --line:#2F4C6E;
+  --mute:#7C93AC;
+  --red:#EE1122;
+  --chrome:#B9C4CE;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  /* Per lo sfondo identico alla home: apri index.html, copia tutta la riga
+     che inizia con  background:var(--paper) url("data:image/jpeg;base64,...
+     e sostituisci la riga qui sotto con quella. */
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Space Grotesk",system-ui,sans-serif;
+  font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:26px 0 0;
+}
+.back{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Space Mono",monospace;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mute);text-decoration:none;
+  transition:color .2s ease,transform .2s ease;
+}
+.back:hover{color:var(--ink);transform:translateX(-3px)}
+.bandmark{
+  font-family:"Syne",sans-serif;font-weight:800;
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);text-decoration:none;
+}
+.bandmark:hover{color:var(--ink)}
+
+.eyebrow{
+  font-family:"Space Mono",monospace;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mute);margin:52px 0 14px;
+}
+h1{
+  font-family:"Syne",sans-serif;font-weight:800;
+  font-size:clamp(2.5rem,9vw,4.4rem);
+  letter-spacing:-.03em;line-height:.96;margin:0 0 20px;
+  text-shadow:-3px -2px 0 var(--red),3px 2px 0 var(--chrome);
+}
+.credits{
+  font-family:"Space Mono",monospace;
+  font-size:12px;letter-spacing:.08em;color:var(--mute);
+  margin:0 0 26px;line-height:1.8;
+}
+
+.player{
+  border-radius:12px;overflow:hidden;
+  background:var(--panel);min-height:152px;
+}
+.player iframe{display:block;width:100%;border:0}
+
+.steps{display:block;width:100%;height:34px;margin:52px 0}
+.steps rect{fill:var(--line)}
+
+h2{
+  font-family:"Space Mono",monospace;font-weight:700;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mute);margin:0 0 24px;
+}
+
+.lyrics{
+  max-width:46ch;
+  white-space:pre-line;
+  font-size:clamp(1.02rem,2.2vw,1.16rem);
+  line-height:1.9;
+}
+.lyrics .part{
+  display:block;
+  font-family:"Space Mono",monospace;font-weight:700;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--red);margin:30px 0 8px;
+}
+.lyrics .part:first-child{margin-top:0}
+
+.songnav{
+  display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
+  margin-top:58px;padding:24px 0;border-top:1px solid var(--line);
+}
+.songnav a{
+  font-family:"Space Mono",monospace;font-size:13px;
+  letter-spacing:.04em;text-decoration:none;color:var(--mute);
+  transition:color .2s ease;
+}
+.songnav a:hover{color:var(--ink)}
+
+footer{
+  padding:6px 0 46px;
+  font-family:"Space Mono",monospace;font-size:12px;
+  color:var(--mute);line-height:1.8;
+}
+footer p{margin:0 0 4px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="topbar">
+    <a class="back" href="index.html#brani">
+      <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true">
+        <path d="M13 5H1M5 1 1 5l4 4" stroke="currentColor" stroke-width="1.6"
+              fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      All songs
+    </a>
+    <a class="bandmark" href="index.html">Alias4us</a>
+  </nav>
+
+  <header>
+    <p class="eyebrow">Alias4us — Song</p>
+    <h1>In Flames</h1>
+    <p class="credits">Lyrics, music and arrangements: FX &amp; Fenni</p>
+
+    <div class="player">
+      <iframe
+        src="https://open.spotify.com/embed/track/0GoYKnsrUVEEgXC7GKEHsm?utm_source=generator&amp;theme=0"
+        width="100%" height="152"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="In Flames on Spotify"></iframe>
+    </div>
+  </header>
+
+  <svg class="steps" viewBox="0 0 480 20" preserveAspectRatio="none" aria-hidden="true">
+    <rect x="0"   y="4"  width="30" height="16"/>
+    <rect x="30"  y="13" width="30" height="7"/>
+    <rect x="60"  y="9"  width="30" height="11"/>
+    <rect x="90"  y="0"  width="30" height="20"/>
+    <rect x="120" y="15" width="30" height="5"/>
+    <rect x="150" y="7"  width="30" height="13"/>
+    <rect x="180" y="2"  width="30" height="18"/>
+    <rect x="210" y="12" width="30" height="8"/>
+    <rect x="240" y="6"  width="30" height="14"/>
+    <rect x="270" y="16" width="30" height="4"/>
+    <rect x="300" y="10" width="30" height="10"/>
+    <rect x="330" y="1"  width="30" height="19"/>
+    <rect x="360" y="8"  width="30" height="12"/>
+    <rect x="390" y="14" width="30" height="6"/>
+    <rect x="420" y="5"  width="30" height="15"/>
+    <rect x="450" y="11" width="30" height="9"/>
+  </svg>
+
+  <main>
+    <h2>Lyrics</h2>
+
+    <!-- ============================================================
+         IL TESTO VA QUI DENTRO, al posto della frase segnaposto.
+         Incollalo tale e quale, a filo del margine sinistro:
+         ritorni a capo e righe vuote fra le strofe sono rispettati,
+         senza <br> né <p>. Niente rientri a inizio riga.
+
+         Etichette delle parti (opzionali):
+         <span class="part">Verse 1</span>
+         <span class="part">Chorus</span>
+         ============================================================ -->
+
+    <div class="lyrics">Incolla qui il testo di In Flames.</div>
+
+  </main>
+
+  <nav class="songnav">
+    <a href="index.html#brani">← All songs</a>
+    <a href="shy.html">Shy →</a>
+  </nav>
+
+  <footer>
+    <p>Lyrics, music and arrangements by FX &amp; Fenni.</p>
+    <p>© <span id="anno">2026</span> Alias4us. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script>document.getElementById('anno').textContent=new Date().getFullYear();</script>
+</body>
+</html>
