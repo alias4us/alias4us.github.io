@@ -253,6 +253,38 @@ footer p{margin:0 0 4px}
   font-family:"Space Mono",monospace;font-size:12px;
   letter-spacing:.08em;color:var(--mute);
 }
+
+    /* ---------- new release ---------- */
+.newrel{
+  display:block;text-decoration:none;
+  margin:0 0 14px;padding:26px 24px;
+  border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(180deg,rgba(238,17,34,.07),transparent 62%);
+  transition:border-color .25s ease,transform .25s ease;
+}
+.newrel:hover,.newrel:focus-visible{
+  border-color:var(--red);transform:translateY(-2px);
+}
+.newrel-flag{
+  display:block;
+  font-family:"Space Mono",monospace;font-weight:700;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--red);margin:0 0 10px;
+}
+.newrel-title{
+  display:block;
+  font-family:"Syne",sans-serif;font-weight:800;
+  font-size:clamp(2rem,6vw,2.9rem);letter-spacing:-.02em;line-height:1;
+  margin:0 0 14px;
+}
+.newrel:hover .newrel-title{
+  text-shadow:-3px -2px 0 var(--red),3px 2px 0 var(--chrome);
+}
+.newrel-meta{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:"Space Mono",monospace;font-size:12px;
+  letter-spacing:.08em;color:var(--mute);
+}
     
 </style>
 </head>
@@ -306,12 +338,18 @@ footer p{margin:0 0 4px}
 
 <main class="wrap">
 
-  <section id="uscita">
+ <section id="uscita">
     <h2>New release</h2>
 
     <a class="newrel" href="unknown-winds.html">
       <span class="newrel-flag">Out now</span>
       <span class="newrel-title">Unknown Winds</span>
+      <span class="newrel-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
+    </a>
+
+    <a class="newrel" href="one-last-kiss.html">
+      <span class="newrel-flag">Out now</span>
+      <span class="newrel-title">One Last Kiss</span>
       <span class="newrel-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
     </a>
   </section>
@@ -327,12 +365,6 @@ footer p{margin:0 0 4px}
 
     <a class="track" id="track-flames" href="in-flames.html">
       <span class="t-title">In Flames</span>
-      <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
-      <span class="fx-layer" aria-hidden="true"></span>
-    </a>
-
-    <a class="track" id="track-kiss" href="one-last-kiss.html">
-      <span class="t-title">One Last Kiss</span>
       <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
       <span class="fx-layer" aria-hidden="true"></span>
     </a>
