@@ -160,8 +160,25 @@ h2{
 .spark-static{
   width:3px;height:3px;opacity:.7;animation:none;
 }
+
+.wind-streak{
+  position:absolute;height:1px;border-radius:1px;
+  background:linear-gradient(90deg,transparent,rgba(185,196,206,.6) 35%,rgba(185,196,206,.6) 65%,transparent);
+  opacity:0;pointer-events:none;
+  animation:wind-gust var(--dur,2.4s) ease-in-out forwards;
+}
+@keyframes wind-gust{
+  0%{opacity:0;transform:translateX(-24px) scaleX(.5)}
+  14%{opacity:.85}
+  60%{opacity:.4}
+  100%{opacity:0;transform:translateX(160px) scaleX(1)}
+}
+.wind-streak-static{
+  width:60px;opacity:.3;animation:none;
+}
 @media (prefers-reduced-motion:reduce){
   .firefly{animation:none;opacity:.75}
+  .wind-streak{animation:none;opacity:.25}
 }
 .track:last-of-type{border-bottom:1px solid var(--line)}
 .track .t-title{
@@ -289,7 +306,10 @@ footer p{margin:0 0 4px}
   font-family:"Space Mono",monospace;font-size:12px;
   letter-spacing:.08em;color:var(--mute);
 }
-    
+#newrel-unknown-winds{
+  position:relative;overflow:hidden;
+}
+
 </style>
     <style>
   .hero-cta {
@@ -455,10 +475,11 @@ footer p{margin:0 0 4px}
  <section id="uscita">
     <h2>New release</h2>
 
-    <a class="newrel" href="unknown-winds.html">
+    <a class="newrel" id="newrel-unknown-winds" href="unknown-winds.html">
       <span class="newrel-flag">Out now</span>
       <span class="newrel-title">Unknown Winds</span>
       <span class="newrel-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
+      <span class="fx-layer" aria-hidden="true"></span>
     </a>
 
     <a class="newrel" href="one-last-kiss.html">
@@ -605,8 +626,38 @@ footer p{margin:0 0 4px}
     setInterval(function(){ spawnSpark(layer); }, intervalMs);
   }
 
+  function spawnWind(layer){
+    var el = document.createElement('span');
+    el.className = 'wind-streak';
+    var h = layer.clientHeight || 60;
+    el.style.top = (8 + Math.random()*Math.max(h-16, 20)) + 'px';
+    el.style.width = (36 + Math.random()*46).toFixed(0) + 'px';
+    el.style.setProperty('--dur', (2+Math.random()*1.6).toFixed(2)+'s');
+    layer.appendChild(el);
+    el.addEventListener('animationend', function(){ el.remove(); });
+  }
+
+  function startWind(layerId, intervalMs){
+    var layer = document.querySelector('#'+layerId+' .fx-layer');
+    if (!layer) return;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion){
+      for (var i=0; i<3; i++){
+        var el = document.createElement('span');
+        el.className = 'wind-streak wind-streak-static';
+        el.style.top = (16 + i*18) + 'px';
+        el.style.left = (6 + i*10) + '%';
+        layer.appendChild(el);
+      }
+      return;
+    }
+    spawnWind(layer);
+    setInterval(function(){ spawnWind(layer); }, intervalMs);
+  }
+
   makeFireflies('track-shy', 6);
   startSparks('track-flames', 90);
+  startWind('newrel-unknown-winds', 700);
 })();
 </script>
 </body>
