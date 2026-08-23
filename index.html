@@ -292,9 +292,44 @@ footer p{margin:0 0 4px}
     
 </style>
     <style>
-   .disclosure {
-    width: min(100%, 480px);
+  .hero-cta {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: calc(var(--step) * 1.4);
+    width: 100%;
     margin: calc(var(--step) * -1.2) auto calc(var(--step) * 1.1);
+    flex-wrap: wrap;
+  }
+
+  .hero-cta .platforms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: calc(var(--step) * 0.6);
+    margin: 0;
+  }
+
+  .hero-cta .disclosure {
+    flex: 1 1 300px;
+    max-width: 380px;
+  }
+
+  @media (max-width: 640px) {
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-cta .platforms {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+   .disclosure {
+    width: 100%;
+    margin: 0;
     padding: calc(var(--step) * 0.55) calc(var(--step) * 1.3) calc(var(--step) * 0.75);
     border: 1px solid var(--line);
     border-radius: 4px;
@@ -365,17 +400,8 @@ footer p{margin:0 0 4px}
   </h1>
 </header>
 
-<div class="disclosure">
-  <p class="disclosure__tag">// Process</p>
-  <h2 class="disclosure__title">Human-composed, <span>AI-rendered.</span></h2>
-  <p class="disclosure__body">
-    Alias4us songs are written, arranged and recorded as complete demos by
-    Fenni and FX before generative AI is used for their final sonic and
-    vocal rendition.
-  </p>
-</div>
-    
 <div class="wrap">
+  <div class="hero-cta">
   <ul class="platforms">
     <li>
       <!-- REPLACE href with your Spotify artist link -->
@@ -411,6 +437,17 @@ footer p{margin:0 0 4px}
       </a>
     </li>
   </ul>
+
+<div class="disclosure">
+  <p class="disclosure__tag">// Process</p>
+  <h2 class="disclosure__title">Human-composed, <span>AI-rendered.</span></h2>
+  <p class="disclosure__body">
+    Alias4us songs are written, arranged and recorded as complete demos by
+    Fenni and FX before generative AI is used for their final sonic and
+    vocal rendition.
+  </p>
+</div>
+  </div>
 </div>
 
 <main class="wrap">
