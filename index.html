@@ -179,6 +179,7 @@ h2{
 @media (prefers-reduced-motion:reduce){
   .firefly{animation:none;opacity:.75}
   .wind-streak{animation:none;opacity:.25}
+  .boat-fx .hull,.boat-fx .ripple{animation:none}
 }
 .track:last-of-type{border-bottom:1px solid var(--line)}
 .track .t-title{
@@ -246,38 +247,6 @@ footer p{margin:0 0 4px}
     /* ---------- new release ---------- */
 .newrel{
   display:block;text-decoration:none;
-  margin:0 0 8px;padding:26px 24px;
-  border:1px solid var(--line);border-radius:14px;
-  background:linear-gradient(180deg,rgba(238,17,34,.07),transparent 62%);
-  transition:border-color .25s ease,transform .25s ease;
-}
-.newrel:hover,.newrel:focus-visible{
-  border-color:var(--red);transform:translateY(-2px);
-}
-.newrel-flag{
-  display:block;
-  font-family:"Space Mono",monospace;font-weight:700;
-  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--red);margin:0 0 10px;
-}
-.newrel-title{
-  display:block;
-  font-family:"Syne",sans-serif;font-weight:800;
-  font-size:clamp(2rem,6vw,2.9rem);letter-spacing:-.02em;line-height:1;
-  margin:0 0 14px;
-}
-.newrel:hover .newrel-title{
-  text-shadow:-3px -2px 0 var(--red),3px 2px 0 var(--chrome);
-}
-.newrel-meta{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:"Space Mono",monospace;font-size:12px;
-  letter-spacing:.08em;color:var(--mute);
-}
-
-    /* ---------- new release ---------- */
-.newrel{
-  display:block;text-decoration:none;
   margin:0 0 14px;padding:26px 24px;
   border:1px solid var(--line);border-radius:14px;
   background:linear-gradient(180deg,rgba(238,17,34,.07),transparent 62%);
@@ -306,8 +275,21 @@ footer p{margin:0 0 4px}
   font-family:"Space Mono",monospace;font-size:12px;
   letter-spacing:.08em;color:var(--mute);
 }
-#newrel-unknown-winds{
+#newrel-at-my-side{
   position:relative;overflow:hidden;
+}
+
+/* ---------- barchetta di carta: At My Side ---------- */
+.boat-fx{position:absolute;right:20px;bottom:16px;width:44px;height:46px;pointer-events:none}
+.boat-fx .hull{animation:boat-bob 3.6s ease-in-out infinite;transform-origin:50% 78%}
+.boat-fx .ripple{animation:ripple-drift 4.2s ease-in-out infinite;transform-origin:50% 50%}
+@keyframes boat-bob{
+  0%,100%{transform:translateY(0) rotate(-4deg)}
+  50%{transform:translateY(-4px) rotate(5deg)}
+}
+@keyframes ripple-drift{
+  0%,100%{opacity:.35;transform:translateX(0)}
+  50%{opacity:.6;transform:translateX(2px)}
 }
 
 </style>
@@ -436,24 +418,13 @@ footer p{margin:0 0 4px}
       </a>
     </li>
     <li>
-      <!-- REPLACE href with your Amazon Music artist link -->
-      <a href="https://music.amazon.it/artists/B0HC4CVP5J?ref=dm_sh_UOfyKYULQCDoGgxeTNaanKU6t" aria-label="Listen on Amazon Music">
-        <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
-          <circle cx="12" cy="12" r="12" fill="#25D1DA"/>
-          <path d="M9.6 8.1 16.3 12 9.6 15.9Z" fill="#0B1C2B"/>
-          <path d="M6.3 17.9c3.6 1.9 8 1.9 11.6 0" stroke="#0B1C2B" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-        </svg>
-        <span>Amazon Music</span>
-      </a>
-    </li>
-    <li>
       <!-- REPLACE href with your YouTube channel link -->
-      <a href="https://www.youtube.com/@Alias4us" aria-label="Watch on YouTube">
+      <a href="https://www.youtube.com/@Alias4us/videos" aria-label="Watch our official lyric videos on YouTube">
         <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
           <rect x="0.5" y="4.5" width="23" height="15" rx="6" fill="#FF0000"/>
           <path d="M10 8.3 16.2 12 10 15.7Z" fill="#FFFFFF"/>
         </svg>
-        <span>YouTube</span>
+        <span>Lyric Videos</span>
       </a>
     </li>
     <li>
@@ -486,17 +457,18 @@ footer p{margin:0 0 4px}
  <section id="uscita">
     <h2>New release</h2>
 
-    <a class="newrel" id="newrel-unknown-winds" href="unknown-winds.html">
+    <a class="newrel" id="newrel-at-my-side" href="at-my-side.html">
       <span class="newrel-flag">Out now</span>
-      <span class="newrel-title">Unknown Winds</span>
+      <span class="newrel-title">At My Side</span>
       <span class="newrel-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
-      <span class="fx-layer" aria-hidden="true"></span>
-    </a>
-
-    <a class="newrel" href="one-last-kiss.html">
-      <span class="newrel-flag">Out now</span>
-      <span class="newrel-title">One Last Kiss</span>
-      <span class="newrel-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
+      <svg class="boat-fx" viewBox="0 0 40 42" aria-hidden="true">
+        <g class="hull">
+          <path d="M6 24 L34 24 L28 32 L12 32 Z" fill="none" stroke="var(--chrome)" stroke-width="1.6" stroke-linejoin="round"/>
+          <line x1="20" y1="24" x2="20" y2="5" stroke="var(--chrome)" stroke-width="1.4"/>
+          <path d="M20 6 L20 22 L9 22 Z" fill="var(--red)" opacity=".55"/>
+        </g>
+        <path class="ripple" d="M4 37 q4 -3 8 0 t8 0 t8 0 t8 0" fill="none" stroke="var(--line)" stroke-width="1.4"/>
+      </svg>
     </a>
   </section>
 
@@ -513,6 +485,17 @@ footer p{margin:0 0 4px}
       <span class="t-title">In Flames</span>
       <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
       <span class="fx-layer" aria-hidden="true"></span>
+    </a>
+
+    <a class="track" id="track-wind" href="unknown-winds.html">
+      <span class="t-title">Unknown Winds</span>
+      <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
+      <span class="fx-layer" aria-hidden="true"></span>
+    </a>
+
+    <a class="track" id="track-kiss" href="one-last-kiss.html">
+      <span class="t-title">One Last Kiss</span>
+      <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
     </a>
 
     <!-- Placeholder banner below. When you have a real Spotify/YouTube
@@ -668,7 +651,7 @@ footer p{margin:0 0 4px}
 
   makeFireflies('track-shy', 6);
   startSparks('track-flames', 90);
-  startWind('newrel-unknown-winds', 700);
+  startWind('track-wind', 700);
 })();
 </script>
 </body>
