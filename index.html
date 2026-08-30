@@ -386,8 +386,21 @@ footer p{margin:0 0 4px}
   }
 
   @media (max-width: 560px) {
+    .hero-cta {
+      margin-top: 4px;
+      margin-bottom: calc(var(--step) * 0.6);
+      gap: calc(var(--step) * 0.8);
+    }
     .disclosure {
-      padding: calc(var(--step) * 0.5) calc(var(--step) * 0.9);
+      padding: calc(var(--step) * 0.4) calc(var(--step) * 0.7);
+    }
+    .disclosure__body {
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .steps {
+      height: 18px;
+      margin: 26px 0;
     }
   }
 </style>
