@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alias4us.github.io/sitemap.xml
