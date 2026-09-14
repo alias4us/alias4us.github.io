@@ -307,9 +307,9 @@ footer p{margin:0 0 4px}
 
 /* ---------- barchetta di carta: At My Side ---------- */
 .boat-fx{position:absolute;right:20px;bottom:16px;width:44px;height:46px;pointer-events:none}
-.boat-fx--mini{
-  right:12px;bottom:auto;top:3px;
-  width:25px;height:26px;
+.boat-fx.boat-fx-inline{
+  position:static;display:inline-block;vertical-align:middle;
+  width:26px;height:27px;margin:-4px 0 0 10px;
 }
 .boat-fx .hull{animation:boat-bob 3.6s ease-in-out infinite;transform-origin:50% 78%}
 .boat-fx .ripple{animation:ripple-drift 4.2s ease-in-out infinite;transform-origin:50% 50%}
@@ -517,17 +517,14 @@ footer p{margin:0 0 4px}
     <h2>Songs</h2>
 
     <a class="track" id="track-side" href="at-my-side.html">
-      <span class="t-title">At My Side</span>
-      <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
-      <span class="fx-layer" aria-hidden="true">
-        <svg class="boat-fx boat-fx--mini" viewBox="0 0 40 42" aria-hidden="true">
+      <span class="t-title">At My Side<svg class="boat-fx boat-fx-inline" viewBox="0 0 40 42" aria-hidden="true">
           <g class="hull">
             <path d="M6 24 L34 24 L28 32 L12 32 Z" fill="none" stroke="var(--chrome)" stroke-width="1.6" stroke-linejoin="round"/>
             <line x1="20" y1="24" x2="20" y2="5" stroke="var(--chrome)" stroke-width="1.4"/>
             <path d="M20 6 L20 22 L9 22 Z" fill="var(--red)" opacity=".55"/>
           </g>
-        </svg>
-      </span>
+        </svg></span>
+      <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
     </a>
 
     <a class="track" id="track-kiss" href="one-last-kiss.html">
