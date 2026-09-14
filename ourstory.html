@@ -334,6 +334,25 @@ footer p{margin:0 0 4px}
     color:var(--ink);margin:0 0 12px;
   }
 
+  .story-columns{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px 56px;
+    margin:8px 0 0;
+  }
+  .story-col{min-width:0}
+  .story-lang-tag{
+    font-family:"Space Mono",monospace;font-weight:700;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--red);
+    margin:0 0 18px;
+  }
+  .story-columns .prose{max-width:none}
+  .story-columns .prose p{margin:0 0 16px;font-size:.98rem}
+  @media (max-width:760px){
+    .story-columns{grid-template-columns:1fr;gap:0}
+    .story-col+.story-col{
+      margin-top:36px;padding-top:36px;border-top:1px solid var(--line);
+    }
+  }
+
   .placeholder-block{
     margin:32px 0 0;padding:22px 24px;
     border:1px dashed var(--line);border-radius:10px;
@@ -397,36 +416,87 @@ footer p{margin:0 0 4px}
 
   <section id="storia">
     <h2>Our Story</h2>
-    <p class="page-title">Two friends, one long song.</p>
-    <p class="page-lede">How Alias4us started, what happened in between, and how it finally came together.</p>
+    <p class="page-title">Two bikes. One dream. Twenty-five years.</p>
+    <p class="page-lede">The story behind Alias4us.</p>
 
-    <div class="story-block">
-      <h3>Where it started</h3>
-      <div class="prose">
-        <p><strong>Alias4us</strong> is the story of <strong>FX</strong> and <strong>Fenni</strong>, whose musical journey began during their university years in Pisa around the turn of the millennium.</p>
+    <div class="story-columns">
+
+      <div class="story-col">
+        <p class="story-lang-tag">English</p>
+        <div class="prose">
+          <p>Some stories start with a bang.</p>
+          <p>Ours started on a bike.</p>
+          <p>Pisa, 1998. A tree-lined avenue. Two clueless twenty-somethings pedaling home after wasting an afternoon at the university cafeteria.</p>
+          <p>One was studying Physics.</p>
+          <p>The other had just crawled out of a year of academic purgatory in Biology and finally made it into Medical School.</p>
+          <p>We did go there to eat, technically.</p>
+          <p>Mostly, though, we went to look at girls and invent entire personalities for them.</p>
+          <p>&ldquo;See her? I bet she's a nightmare.&rdquo;<br>&ldquo;What about that one? She looks like she'd hate absolutely everybody.&rdquo;</p>
+          <p>Then came the twins.<br>Two of them.<br>Two of us.<br>The math practically did itself. We were hopeless.</p>
+          <p>Two complete nerds, talking — and talking — and talking — about everything. Life. Dreams. Music. Girls. More girls. Always on the way home, riding side by side through that half-lit avenue.</p>
+          <p>And then, somewhere along that road, the question that started it all:</p>
+          <p>&ldquo;You into music?&rdquo;<br>&ldquo;Of course.&rdquo;<br>&ldquo;Rock?&rdquo;<br>&ldquo;Hell yeah.&rdquo;<br>&ldquo;I play guitar... totally by ear.&rdquo;<br>&ldquo;No way. I've been meaning to learn. Maybe you could show me a few things?&rdquo;<br>&ldquo;Sure. But fair warning — I'm left-handed.&rdquo;</p>
+          <p>That was it. That was the whole beginning.</p>
+          <p>From that day on — and every day after, as if it were still Day One — we never really stopped telling each other stories. Little by little, those stories became songs.</p>
+          <p>As we grew older. As life kept throwing emotions at us.<br>The beautiful ones.<br>The heartbreaking ones.<br>The ones that knock the wind out of you.<br>The ones that make you jealous.<br>The ones that leave you wondering what the hell just happened.</p>
+          <p>At first, we called ourselves <strong>The Heavy Thoughts</strong>. Because we already knew we weren't exactly lightweight people. We didn't do shallow. Everything had to mean something.<br>Sometimes... probably a little too much.</p>
+          <p>We went to the same music school. Shared the same dreams. Shared the same obsession with guitars.<br>And, yes — at one point, we were even interested in the same woman. One of us was hopelessly in love with her. The other was already looking toward the horizon for the next possibility.</p>
+          <p>Completely normal.<br>Almost sanity.<br>Or maybe total madness.</p>
+          <p>Then came our first student concert. Our first song written together.<br>The first. The only one.</p>
+          <p>Our teacher, Vernaccini, deserves a special mention here. Seriously. The patience that man had.</p>
+          <p>Then came degrees. Master's degrees. Medical specializations. America. COVID. Life.</p>
+          <p>At some point, one of us started making music alone. The other seemed fully committed to discovering exactly how many bones a human body could break by crashing onto asphalt.</p>
+          <p>Meanwhile, love happened. Families happened. Children happened. Life happened — and it took us in different directions.<br>Heartbreak. Betrayal. Marriage. Jobs. Flights. Responsibilities.<br>The kind of plot twists nobody warns you about.</p>
+          <p>But somehow, through all of it, the dream never really changed: to turn emotions into music.</p>
+          <p>Music became our favourite alias.<br>So we became <strong>ALIAS4US</strong>.</p>
+          <p>Because, truthfully, we've always talked about the same things. First crushes. First awkward encounters. Women. Broken hearts. Broken promises. The spectacular ways people can wreck each other's lives... and, occasionally, save them.</p>
+          <p>Deep down, we're still those two idiots riding home on their bikes, telling each other what they want to be when they grow up.</p>
+          <p>AI didn't create our dream.<br>It just stopped it from collecting dust in a drawer.</p>
+          <p>So here we are. Still telling stories. Still watching two lives evolve side by side. Still trying to make sense of it all through music.</p>
+          <p>And, if we're being completely honest... we still prefer talking about women.<br>And love.</p>
+          <p>Because love is a little like a red balloon.<br>Blow it up too much, and it bursts.<br>Don't hold on tight enough, and it floats away.</p>
+          <p>Enjoy the ride.<br>And, obviously, the music.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="story-block">
-      <h3>Twenty-five years, still writing</h3>
-      <div class="prose">
-        <p>Life led them down different and demanding professional paths, but songwriting remained a constant companion. For more than twenty-five years they kept writing, collecting melodies, lyrics and emotions inspired by love, loss, hope and the unexpected turns of life.</p>
+      <div class="story-col">
+        <p class="story-lang-tag">Italiano</p>
+        <div class="prose">
+          <p>Certe storie iniziano con un botto.</p>
+          <p>La nostra è iniziata in bicicletta.</p>
+          <p>Pisa, 1998. Un viale alberato. Due ventenni senza arte né parte che pedalano verso casa dopo un pomeriggio buttato alla mensa universitaria.</p>
+          <p>Uno studiava Fisica.</p>
+          <p>L'altro era appena uscito da un anno di purgatorio accademico a Biologia ed era finalmente entrato a Medicina.</p>
+          <p>Alla mensa ci si andava per mangiare, in teoria.</p>
+          <p>In pratica, ci si andava soprattutto per guardare le ragazze e inventargli una vita intera.</p>
+          <p>&laquo;Vedi quella? Scommetto che è un incubo.&raquo;<br>&laquo;E quell'altra? Ha la faccia di una che odia tutti, ma proprio tutti.&raquo;</p>
+          <p>Poi arrivarono le gemelle.<br>Due di loro.<br>Due di noi.<br>Il conto tornava da solo. Eravamo spacciati.</p>
+          <p>Due secchioni allo stato puro, a parlare — e parlare — e parlare — di tutto. Vita. Sogni. Musica. Ragazze. Altre ragazze. Sempre tornando a casa, fianco a fianco, lungo quel viale mezzo illuminato.</p>
+          <p>E poi, da qualche parte lungo quella strada, la domanda che ha cambiato tutto:</p>
+          <p>&laquo;Ti piace la musica?&raquo;<br>&laquo;Ovvio.&raquo;<br>&laquo;Rock?&raquo;<br>&laquo;E chi se no.&raquo;<br>&laquo;Io suono la chitarra... a orecchio, però.&raquo;<br>&laquo;Ma dai. Volevo impararla da sempre. Magari mi fai vedere qualcosa?&raquo;<br>&laquo;Certo. Ti avviso però: sono mancino.&raquo;</p>
+          <p>Tutto qui. Era già iniziato tutto lì.</p>
+          <p>Da quel giorno — e ogni giorno dopo, come se fosse ancora il primo — non abbiamo mai smesso di raccontarci storie. Piano piano, quelle storie sono diventate canzoni.</p>
+          <p>Crescendo. Con la vita che continuava a scaricarci addosso emozioni.<br>Quelle belle.<br>Quelle che ti spezzano.<br>Quelle che ti tolgono il fiato.<br>Quelle che ti fanno morire di invidia.<br>Quelle che ti lasciano lì a chiederti cosa diavolo sia appena successo.</p>
+          <p>All'inizio ci chiamavamo <strong>The Heavy Thoughts</strong>. Perché lo sapevamo già di non essere tipi leggeri. Niente di superficiale, per noi. Tutto doveva significare qualcosa.<br>A volte... probabilmente un po' troppo.</p>
+          <p>Stessa scuola di musica. Stessi sogni. Stessa ossessione per le chitarre.<br>E sì — a un certo punto, ci siamo anche innamorati della stessa donna. Uno perdutamente. L'altro già con lo sguardo all'orizzonte, verso la prossima occasione.</p>
+          <p>Del tutto normale.<br>Quasi sano di mente.<br>O forse pura follia.</p>
+          <p>Poi il nostro primo concerto da studenti. La nostra prima canzone scritta insieme.<br>La prima. L'unica.</p>
+          <p>Il nostro maestro, Vernaccini, merita una menzione a parte. Sul serio. La pazienza che ha avuto con noi.</p>
+          <p>Poi lauree. Specializzazioni. America. COVID. La vita.</p>
+          <p>A un certo punto, uno dei due ha iniziato a fare musica da solo. L'altro sembrava impegnato a scoprire esattamente quante ossa può rompersi un corpo umano schiantandosi sull'asfalto.</p>
+          <p>Nel frattempo, l'amore è successo. Le famiglie sono successe. I figli sono successi. La vita è successa — e ci ha portati su strade diverse.<br>Cuori spezzati. Tradimenti. Matrimoni. Lavori. Voli. Responsabilità.<br>Il genere di colpi di scena di cui nessuno ti avvisa.</p>
+          <p>Ma in mezzo a tutto questo, il sogno non è mai davvero cambiato: trasformare le emozioni in musica.</p>
+          <p>La musica è diventata il nostro alias preferito.<br>Così siamo diventati <strong>ALIAS4US</strong>.</p>
+          <p>Perché, a dirla tutta, abbiamo sempre parlato delle stesse cose. Primi amori. Primi incontri imbarazzanti. Donne. Cuori spezzati. Promesse tradite. I modi spettacolari in cui le persone riescono a rovinarsi la vita a vicenda... e, ogni tanto, a salvarsela.</p>
+          <p>Nel profondo, siamo ancora quei due idioti che tornano a casa in bici, a raccontarsi cosa vogliono fare da grandi.</p>
+          <p>L'intelligenza artificiale non ha creato il nostro sogno.<br>Ha solo impedito che finisse a prendere polvere in un cassetto.</p>
+          <p>Eccoci qui, quindi. Ancora a raccontare storie. Ancora a guardare due vite evolversi fianco a fianco. Ancora a cercare di dare un senso a tutto questo attraverso la musica.</p>
+          <p>E, a essere completamente onesti... continuiamo a preferire parlare di donne.<br>E d'amore.</p>
+          <p>Perché l'amore è un po' come un palloncino rosso.<br>Se lo gonfi troppo, scoppia.<br>Se non lo tieni abbastanza stretto, vola via.</p>
+          <p>Godetevi il viaggio.<br>E, ovviamente, la musica.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="story-block">
-      <h3>How the songs come to life today</h3>
-      <div class="prose">
-        <p>Today, those songs finally come to life through Alias4us, where human creativity meets modern technology. Blending acoustic rock, classic rock, progressive influences and cinematic atmospheres, their music is driven by authentic stories rather than trends.</p>
-        <p>Every song begins the same way: with a real melody, played on a guitar or a piano. Artificial intelligence didn't write their songs — it simply became the instrument that allowed decades of ideas to be heard through modern production, remixing and remastering.</p>
-        <p>Alias4us is proof that some dreams don't fade with time; they simply wait for the right moment to find their voice.</p>
-      </div>
-    </div>
-
-    <div class="placeholder-block">
-      <p class="placeholder-tag">// Add your own text here</p>
-      <p>— Write here how you two met, or a memory from those university years in Pisa —</p>
-      <p>— Write here the story behind your favorite song, or how the return to music actually happened —</p>
     </div>
   </section>
 
