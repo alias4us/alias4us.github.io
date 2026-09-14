@@ -180,9 +180,28 @@ h2{
 .wind-streak-static{
   width:60px;opacity:.3;animation:none;
 }
+
+.smoke{
+  position:absolute;bottom:8px;border-radius:50%;
+  background:radial-gradient(circle,rgba(199,208,217,.85) 0%,rgba(199,208,217,.4) 50%,transparent 78%);
+  filter:blur(1px);
+  opacity:0;pointer-events:none;
+  animation:smoke-rise var(--dur,3.2s) ease-out forwards;
+}
+@keyframes smoke-rise{
+  0%{opacity:0;transform:translate(0,0) scale(.5)}
+  14%{opacity:.75}
+  55%{opacity:.5}
+  100%{opacity:0;transform:translate(var(--dx,14px),calc(-1 * var(--rise,90px))) scale(2.3)}
+}
+.smoke-static{
+  width:24px;height:24px;opacity:.35;animation:none;filter:blur(1.5px);
+}
+
 @media (prefers-reduced-motion:reduce){
   .firefly{animation:none;opacity:.75}
   .wind-streak{animation:none;opacity:.25}
+  .smoke{animation:none;opacity:.18}
   .boat-fx .hull,.boat-fx .ripple{animation:none}
 }
 .track:last-of-type{border-bottom:1px solid var(--line)}
@@ -280,6 +299,9 @@ footer p{margin:0 0 4px}
   letter-spacing:.08em;color:var(--mute);
 }
 #newrel-at-my-side{
+  position:relative;overflow:hidden;
+}
+#newrel-disgrace{
   position:relative;overflow:hidden;
 }
 
@@ -479,18 +501,11 @@ footer p{margin:0 0 4px}
  <section id="uscita">
     <h2>New release</h2>
 
-    <a class="newrel" id="newrel-at-my-side" href="at-my-side.html">
+    <a class="newrel" id="newrel-disgrace" href="call-me-a-disgrace.html">
       <span class="newrel-flag">Out now</span>
-      <span class="newrel-title">At My Side</span>
+      <span class="newrel-title">Call Me A Disgrace</span>
       <span class="newrel-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
-      <svg class="boat-fx" viewBox="0 0 40 42" aria-hidden="true">
-        <g class="hull">
-          <path d="M6 24 L34 24 L28 32 L12 32 Z" fill="none" stroke="var(--chrome)" stroke-width="1.6" stroke-linejoin="round"/>
-          <line x1="20" y1="24" x2="20" y2="5" stroke="var(--chrome)" stroke-width="1.4"/>
-          <path d="M20 6 L20 22 L9 22 Z" fill="var(--red)" opacity=".55"/>
-        </g>
-        <path class="ripple" d="M4 37 q4 -3 8 0 t8 0 t8 0 t8 0" fill="none" stroke="var(--line)" stroke-width="1.4"/>
-      </svg>
+      <span class="fx-layer" aria-hidden="true"></span>
     </a>
   </section>
 
@@ -517,6 +532,11 @@ footer p{margin:0 0 4px}
 
     <a class="track" id="track-kiss" href="one-last-kiss.html">
       <span class="t-title">One Last Kiss</span>
+      <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
+    </a>
+
+    <a class="track" id="track-side" href="at-my-side.html">
+      <span class="t-title">At My Side</span>
       <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
     </a>
 
@@ -671,9 +691,42 @@ footer p{margin:0 0 4px}
     setInterval(function(){ spawnWind(layer); }, intervalMs);
   }
 
+  function spawnSmoke(layer){
+    var el = document.createElement('span');
+    el.className = 'smoke';
+    var w = layer.clientWidth;
+    var size = (14 + Math.random()*12).toFixed(1) + 'px';
+    el.style.width = size;
+    el.style.height = size;
+    el.style.left = (10 + Math.random()*Math.max(w-30, 20)) + 'px';
+    el.style.setProperty('--dx', (Math.random()*30-15).toFixed(1)+'px');
+    el.style.setProperty('--rise', (60+Math.random()*50).toFixed(1)+'px');
+    el.style.setProperty('--dur', (2800+Math.random()*1800).toFixed(0)+'ms');
+    layer.appendChild(el);
+    el.addEventListener('animationend', function(){ el.remove(); });
+  }
+
+  function startSmoke(layerId, intervalMs){
+    var layer = document.querySelector('#'+layerId+' .fx-layer');
+    if (!layer) return;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion){
+      for (var i=0; i<3; i++){
+        var el = document.createElement('span');
+        el.className = 'smoke smoke-static';
+        el.style.left = (14 + i*22) + '%';
+        layer.appendChild(el);
+      }
+      return;
+    }
+    spawnSmoke(layer);
+    setInterval(function(){ spawnSmoke(layer); }, intervalMs);
+  }
+
   makeFireflies('track-shy', 6);
   startSparks('track-flames', 90);
   startWind('track-wind', 700);
+  startSmoke('newrel-disgrace', 1100);
 })();
 </script>
 </body>
