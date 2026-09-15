@@ -539,15 +539,31 @@ footer p{margin:0 0 4px}
 (function(){
   var buttons = document.querySelectorAll('.lang-btn');
   var cols = document.querySelectorAll('.story-col');
+
+  function setLang(lang){
+    buttons.forEach(function(b){
+      b.classList.toggle('is-active', b.getAttribute('data-lang') === lang);
+    });
+    cols.forEach(function(col){
+      col.hidden = col.getAttribute('data-lang') !== lang;
+    });
+  }
+
+  function detectLang(){
+    var langs = navigator.languages || [navigator.language || 'en'];
+    for (var i = 0; i < langs.length; i++){
+      if (langs[i].toLowerCase().indexOf('it') === 0) return 'it';
+    }
+    return 'en';
+  }
+
   buttons.forEach(function(btn){
     btn.addEventListener('click', function(){
-      var lang = btn.getAttribute('data-lang');
-      buttons.forEach(function(b){ b.classList.toggle('is-active', b === btn); });
-      cols.forEach(function(col){
-        col.hidden = col.getAttribute('data-lang') !== lang;
-      });
+      setLang(btn.getAttribute('data-lang'));
     });
   });
+
+  setLang(detectLang());
 })();
 </script>
 </body>
