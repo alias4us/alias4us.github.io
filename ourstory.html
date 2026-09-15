@@ -334,24 +334,24 @@ footer p{margin:0 0 4px}
     color:var(--ink);margin:0 0 12px;
   }
 
-  .story-columns{
-    display:grid;grid-template-columns:1fr 1fr;gap:12px 56px;
-    margin:8px 0 0;
+  .lang-toggle{
+    display:inline-flex;gap:8px;margin:6px 0 30px;
   }
-  .story-col{min-width:0}
-  .story-lang-tag{
-    font-family:"Space Mono",monospace;font-weight:700;font-size:11px;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--red);
-    margin:0 0 18px;
+  .lang-btn{
+    font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;
+    padding:8px 18px;border-radius:999px;
+    border:1px solid var(--line);background:transparent;color:var(--mute);
+    cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease;
   }
-  .story-columns .prose{max-width:none}
-  .story-columns .prose p{margin:0 0 16px;font-size:.98rem}
-  @media (max-width:760px){
-    .story-columns{grid-template-columns:1fr;gap:0}
-    .story-col+.story-col{
-      margin-top:36px;padding-top:36px;border-top:1px solid var(--line);
-    }
+  .lang-btn:hover{border-color:var(--red);color:var(--ink)}
+  .lang-btn.is-active{
+    border-color:var(--red);color:var(--ink);background:rgba(238,17,34,.1);
   }
+
+  .story-columns{margin:0}
+  .story-col{max-width:64ch}
+  .story-col[hidden]{display:none}
+  .story-col .prose p{margin:0 0 18px}
 
   .placeholder-block{
     margin:32px 0 0;padding:22px 24px;
@@ -365,16 +365,6 @@ footer p{margin:0 0 4px}
   }
   .placeholder-block p{margin:0 0 10px;color:var(--mute);font-style:italic}
   .placeholder-block p:last-child{margin-bottom:0}
-
-  .gallery-note{
-    margin:0 0 20px;max-width:58ch;
-    font-size:14px;line-height:1.6;color:var(--mute);
-  }
-  .gallery-note code{
-    font-family:"Space Mono",monospace;font-size:12.5px;
-    color:var(--chrome);background:rgba(185,196,206,.08);
-    padding:1px 6px;border-radius:4px;
-  }
 
   .gallery{
     display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
@@ -419,10 +409,14 @@ footer p{margin:0 0 4px}
     <p class="page-title">Two bikes. One dream. Twenty-five years.</p>
     <p class="page-lede">The story behind Alias4us.</p>
 
+    <div class="lang-toggle" role="tablist" aria-label="Choose language">
+      <button type="button" class="lang-btn is-active" data-lang="en">English</button>
+      <button type="button" class="lang-btn" data-lang="it">Italiano</button>
+    </div>
+
     <div class="story-columns">
 
-      <div class="story-col">
-        <p class="story-lang-tag">English</p>
+      <div class="story-col" data-lang="en">
         <div class="prose">
           <p>Some stories start with a bang.</p>
           <p>Ours started on a bike.</p>
@@ -459,8 +453,7 @@ footer p{margin:0 0 4px}
         </div>
       </div>
 
-      <div class="story-col">
-        <p class="story-lang-tag">Italiano</p>
+      <div class="story-col" data-lang="it" hidden>
         <div class="prose">
           <p>Certe storie iniziano con un botto.</p>
           <p>La nostra è iniziata in bicicletta.</p>
@@ -502,7 +495,6 @@ footer p{margin:0 0 4px}
 
   <section id="foto">
     <h2>Photos</h2>
-    <p class="gallery-note">These are placeholders. To swap one for a real photo: upload the image file to the repository (next to <code>index.html</code>), then replace one <code>&lt;li&gt;...&lt;/li&gt;</code> block below with <code>&lt;li&gt;&lt;img src="your-photo.jpg" alt="describe the photo"&gt;&lt;/li&gt;</code>. Add or remove <code>&lt;li&gt;</code> blocks to change how many tiles show.</p>
     <ul class="gallery">
     <li><img src="fx-fenni-guitars-1.jpg" alt="FX and Fenni sitting together, each holding an acoustic guitar"></li>
     <li><img src="fx-fenni-guitars-2.jpg" alt="FX and Fenni sitting side by side with their guitars, mid-conversation"></li>
@@ -543,5 +535,20 @@ footer p{margin:0 0 4px}
 </footer>
 
 
+<script>
+(function(){
+  var buttons = document.querySelectorAll('.lang-btn');
+  var cols = document.querySelectorAll('.story-col');
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var lang = btn.getAttribute('data-lang');
+      buttons.forEach(function(b){ b.classList.toggle('is-active', b === btn); });
+      cols.forEach(function(col){
+        col.hidden = col.getAttribute('data-lang') !== lang;
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
