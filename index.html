@@ -301,8 +301,54 @@ footer p{margin:0 0 4px}
 #newrel-at-my-side{
   position:relative;overflow:hidden;
 }
-#newrel-disgrace{
+#newrel-right-goodbye{
   position:relative;overflow:hidden;
+}
+
+/* ---------- trenino: Right Goodbye (avanti e indietro) ---------- */
+.train-lane{
+  position:relative;display:block;height:34px;margin-top:18px;
+  pointer-events:none;
+}
+.train-lane::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  border-top:1px solid var(--line);
+  background:repeating-linear-gradient(90deg,var(--line) 0 2px,transparent 2px 12px);
+}
+.train-fx{
+  position:absolute;bottom:3px;left:0;width:96px;height:30px;
+  animation:train-run 14s infinite;
+}
+.train-fx .face{
+  transform-box:view-box;transform-origin:48px 15px;
+  animation:train-face 14s infinite;
+}
+.train-fx .puff{
+  transform-box:fill-box;transform-origin:50% 50%;
+  opacity:0;animation:train-puff 1.5s ease-out infinite;
+}
+.train-fx .puff.p2{animation-delay:.75s}
+@keyframes train-run{
+  0%{left:0;animation-timing-function:ease-in-out}
+  42%{left:calc(100% - 96px)}
+  50%{left:calc(100% - 96px);animation-timing-function:ease-in-out}
+  92%{left:0}
+  100%{left:0}
+}
+@keyframes train-face{
+  0%,45.99%{transform:scaleX(1)}
+  46%,95.99%{transform:scaleX(-1)}
+  96%,100%{transform:scaleX(1)}
+}
+@keyframes train-puff{
+  0%{opacity:0;transform:translate(0,0) scale(.5)}
+  20%{opacity:.7}
+  100%{opacity:0;transform:translate(-5px,-10px) scale(1.6)}
+}
+@media (prefers-reduced-motion:reduce){
+  .train-fx{animation:none;left:calc(50% - 48px)}
+  .train-fx .face,.train-fx .puff{animation:none}
+  .train-fx .puff{opacity:.3}
 }
 
 /* ---------- barchetta di carta: At My Side ---------- */
@@ -505,16 +551,48 @@ footer p{margin:0 0 4px}
  <section id="uscita">
     <h2>New release</h2>
 
-    <a class="newrel" id="newrel-disgrace" href="call-me-a-disgrace.html">
+    <a class="newrel" id="newrel-right-goodbye" href="right-goodbye.html">
       <span class="newrel-flag">Out now</span>
-      <span class="newrel-title">Call Me A Disgrace</span>
+      <span class="newrel-title">Right Goodbye</span>
       <span class="newrel-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
-      <span class="fx-layer" aria-hidden="true"></span>
+      <span class="train-lane" aria-hidden="true">
+        <svg class="train-fx" viewBox="0 0 96 30">
+          <g class="face">
+            <!-- vagoni -->
+            <rect x="2" y="9" width="26" height="12" rx="1.5" fill="none" stroke="var(--chrome)" stroke-width="1.4"/>
+            <rect x="32" y="9" width="26" height="12" rx="1.5" fill="none" stroke="var(--chrome)" stroke-width="1.4"/>
+            <rect x="6" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
+            <rect x="14" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
+            <rect x="36" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
+            <rect x="44" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
+            <!-- ganci -->
+            <line x1="28" y1="18" x2="32" y2="18" stroke="var(--chrome)" stroke-width="1.4"/>
+            <line x1="58" y1="18" x2="62" y2="18" stroke="var(--chrome)" stroke-width="1.4"/>
+            <!-- locomotiva -->
+            <path d="M62 21 V8 H70 V4 H76 V8 H90 V21 Z" fill="none" stroke="var(--chrome)" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M70 8 V4 H76 V8" fill="var(--red)" opacity=".55"/>
+            <rect x="80" y="2" width="4" height="6" fill="none" stroke="var(--chrome)" stroke-width="1.4"/>
+            <circle class="puff" cx="82" cy="1" r="2.2" fill="var(--chrome)"/>
+            <circle class="puff p2" cx="82" cy="1" r="2.2" fill="var(--chrome)"/>
+            <!-- ruote -->
+            <circle class="wheel" cx="11" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
+            <circle class="wheel" cx="45" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
+            <circle class="wheel" cx="68" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
+            <circle class="wheel" cx="82" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
+          </g>
+        </svg>
+      </span>
     </a>
   </section>
 
   <section id="brani">
     <h2>Songs</h2>
+
+    <a class="track" id="track-disgrace" href="call-me-a-disgrace.html">
+      <span class="t-title">Call Me A Disgrace</span>
+      <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
+      <span class="fx-layer" aria-hidden="true"></span>
+    </a>
 
     <a class="track" id="track-side" href="at-my-side.html">
       <span class="t-title">At My Side<svg class="boat-fx boat-fx-inline" viewBox="0 0 40 42" aria-hidden="true">
@@ -736,7 +814,7 @@ footer p{margin:0 0 4px}
   makeFireflies('track-shy', 6);
   startSparks('track-flames', 90);
   startWind('track-wind', 700);
-  startSmoke('newrel-disgrace', 1100);
+  startSmoke('track-disgrace', 1100);
 })();
 </script>
 </body>
