@@ -421,6 +421,29 @@ footer p{margin:0 0 4px}
     position: relative;
   }
 
+  .disclosure--link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .disclosure--link:hover,
+  .disclosure--link:focus-visible {
+    border-color: var(--red);
+    transform: translateY(-2px);
+  }
+  .disclosure__more {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--chrome);
+    transition: color .2s ease;
+  }
+  .disclosure--link:hover .disclosure__more { color: var(--red); }
+
   .disclosure::before {
     content: "";
     position: absolute;
@@ -534,7 +557,7 @@ footer p{margin:0 0 4px}
     </li>
   </ul>
 
-<div class="disclosure">
+<a class="disclosure disclosure--link" href="process.html" aria-label="Our process: Human-composed, AI-rendered. Read more">
   <p class="disclosure__tag">// Process</p>
   <h2 class="disclosure__title">Human-composed, <span>AI-rendered.</span></h2>
   <p class="disclosure__body">
@@ -542,7 +565,8 @@ footer p{margin:0 0 4px}
     Fenni and FX before generative AI is used for their final sonic and
     vocal rendition.
   </p>
-</div>
+  <span class="disclosure__more">Read the full process <span aria-hidden="true">→</span></span>
+</a>
   </div>
 </div>
 
