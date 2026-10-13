@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technical Production Process — Alias4us</title>
+<meta name="description" content="Alias4us technical production process: instruments, recording equipment, software, MIDI, multitrack production and AI-assisted rendition with Suno.">
+
+<meta property="og:title" content="Technical Production Process — Alias4us">
+<meta property="og:description" content="Instruments, recording equipment, software and AI-assisted production.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alias4us.github.io/technical-process.html">
+<meta property="og:image" content="https://alias4us.github.io/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#0B1C31;
+  --ink:#EDEEF2;
+  --panel:#16304F;
+  --line:#2F4C6E;
+  --mute:#7C93AC;
+  --red:#EE1122;
+  --chrome:#B9C4CE;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Space Grotesk",system-ui,sans-serif;
+  font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:26px 0 0;
+}
+.back{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Space Mono",monospace;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mute);text-decoration:none;
+  transition:color .2s ease,transform .2s ease;
+}
+.back:hover{color:var(--ink);transform:translateX(-3px)}
+.bandmark{
+  font-family:"Syne",sans-serif;font-weight:800;
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);text-decoration:none;
+}
+.bandmark:hover{color:var(--ink)}
+
+.eyebrow{
+  font-family:"Space Mono",monospace;font-weight:700;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red);margin:52px 0 14px;
+}
+h1{
+  font-family:"Syne",sans-serif;font-weight:800;
+  font-size:clamp(2rem,7vw,3.3rem);
+  letter-spacing:-.03em;line-height:1;margin:0 0 14px;
+  text-wrap:balance;
+}
+.lede{
+  font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.04em;
+  color:var(--mute);margin:0;line-height:1.7;max-width:56ch;
+}
+
+.lang-toggle{display:inline-flex;gap:8px;margin:26px 0 0}
+.lang-btn{
+  font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;
+  padding:8px 18px;border-radius:999px;
+  border:1px solid var(--line);background:transparent;color:var(--mute);
+  cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease;
+}
+.lang-btn:hover{border-color:var(--red);color:var(--ink)}
+.lang-btn.is-active{border-color:var(--red);color:var(--ink);background:rgba(238,17,34,.1)}
+.i18n[hidden]{display:none}
+
+.steps{display:block;width:100%;height:34px;margin:44px 0}
+.steps rect{fill:var(--line)}
+
+/* ---------- sezioni tecniche ---------- */
+.acc-body{padding:6px 22px 18px}
+.acc-body > :first-child{margin-top:12px}
+.acc-body h3{
+  font-family:"Syne",sans-serif;font-weight:600;
+  font-size:clamp(1.05rem,2.4vw,1.25rem);letter-spacing:-.01em;
+  color:var(--ink);margin:26px 0 8px;
+}
+.acc-body p{margin:0 0 14px;font-size:clamp(.98rem,2vw,1.05rem);line-height:1.7}
+.acc-body ul{list-style:none;margin:0 0 16px;padding:0}
+.acc-body li{
+  position:relative;padding:5px 0 5px 22px;
+  font-size:clamp(.98rem,2vw,1.05rem);line-height:1.55;
+}
+.acc-body ul li::before{
+  content:"";position:absolute;left:2px;top:.95em;
+  width:8px;height:2px;background:var(--red);
+}
+
+.acc-body h3.sub{
+  font-family:"Space Mono",monospace;font-weight:700;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--chrome);margin:44px 0 6px;padding-left:12px;
+  border-left:2px solid var(--red);line-height:1.5;
+}
+.subbox{
+  margin:12px 0 0;border:1px solid var(--line);border-left:2px solid var(--red);
+  border-radius:8px;background:rgba(11,28,49,.35);overflow:hidden;
+}
+.subbox > summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:12px 16px;
+  font-family:"Space Mono",monospace;font-weight:700;
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--chrome);line-height:1.5;
+}
+.subbox > summary::-webkit-details-marker{display:none}
+.subbox > summary::after{
+  content:"";flex:none;width:8px;height:8px;
+  border-right:2px solid var(--red);border-bottom:2px solid var(--red);
+  transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform .25s ease;
+}
+.subbox[open] > summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.subbox[open] > summary{border-bottom:1px solid var(--line)}
+.subbox:hover{border-color:var(--chrome);border-left-color:var(--red)}
+.subbody{padding:2px 16px 8px}
+.subbody > :first-child{margin-top:12px}
+@media (prefers-reduced-motion:reduce){.subbox > summary::after{transition:none}}
+
+/* ---------- flusso: tendina ---------- */
+.flowbox{
+  max-width:62ch;margin:0 0 12px;
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background:rgba(22,48,79,.35);
+  transition:border-color .2s ease;
+}
+.flowbox:hover,.flowbox[open]{border-color:var(--red)}
+.flowbox > summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 20px;
+  font-family:"Space Mono",monospace;font-weight:700;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink);
+}
+.flowbox > summary::-webkit-details-marker{display:none}
+.flowbox > summary::after{
+  content:"";flex:none;width:9px;height:9px;
+  border-right:2px solid var(--red);border-bottom:2px solid var(--red);
+  transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform .25s ease;
+}
+.flowbox[open] > summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.flowbox[open] > summary{border-bottom:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){.flowbox > summary::after{transition:none}}
+
+.flow{
+  list-style:none;counter-reset:step;margin:0;padding:0;
+}
+.flow li{
+  counter-increment:step;
+  display:flex;gap:16px;align-items:baseline;
+  padding:12px 18px;border-top:1px solid var(--line);
+}
+.flow li:first-child{border-top:0}
+.flowbox .flow li{font-size:clamp(.98rem,2vw,1.05rem);line-height:1.5}
+.flow li::before{
+  content:counter(step);
+  flex:none;width:1.6em;
+  font-family:"Space Mono",monospace;font-weight:700;font-size:13px;
+  color:var(--red);
+}
+
+.motto{
+  margin:48px 0 14px;max-width:24ch;
+  font-family:"Syne",sans-serif;font-weight:800;
+  font-size:clamp(1.4rem,4.4vw,2rem);line-height:1.15;letter-spacing:-.02em;
+  color:var(--red);text-wrap:balance;
+}
+.outro{
+  max-width:60ch;margin:0 0 40px;
+  font-size:clamp(1rem,2.1vw,1.1rem);line-height:1.75;
+}
+
+.photo{margin:0 0 8px;max-width:440px}
+.photo + .photo{margin-top:36px}
+.photo img{
+  display:block;width:100%;height:auto;
+  border-radius:12px;border:1px solid var(--line);
+}
+.photo figcaption{
+  margin-top:10px;
+  font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;
+  color:var(--mute);
+}
+
+.songnav{
+  display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
+  margin-top:48px;padding:24px 0;border-top:1px solid var(--line);
+}
+.songnav a{
+  font-family:"Space Mono",monospace;font-size:13px;
+  letter-spacing:.04em;text-decoration:none;color:var(--mute);
+  transition:color .2s ease;
+}
+.songnav a:hover{color:var(--ink)}
+
+footer{
+  padding:6px 0 46px;
+  font-family:"Space Mono",monospace;font-size:12px;
+  color:var(--mute);line-height:1.8;
+}
+footer p{margin:0 0 4px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="topbar">
+    <a class="back" href="process.html">
+      <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true">
+        <path d="M13 5H1M5 1 1 5l4 4" stroke="currentColor" stroke-width="1.6"
+              fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="i18n" data-lang="en">Process</span><span class="i18n" data-lang="it" hidden>Processo</span>
+    </a>
+    <a class="bandmark" href="index.html">Alias4us</a>
+  </nav>
+
+  <header>
+    <p class="eyebrow"><span class="i18n" data-lang="en">// Technical process</span><span class="i18n" data-lang="it" hidden>// Processo tecnico</span></p>
+    <h1 class="i18n" data-lang="en">Technical production process</h1>
+    <h1 class="i18n" data-lang="it" hidden>Processo tecnico di produzione</h1>
+    <p class="lede i18n" data-lang="en">Instruments, recording equipment, software and AI-assisted production</p>
+    <p class="lede i18n" data-lang="it" hidden>Strumenti, attrezzatura di registrazione, software e produzione assistita dall'IA</p>
+
+    <div class="lang-toggle" role="group" aria-label="Choose language">
+      <button type="button" class="lang-btn is-active" data-lang="en">English</button>
+      <button type="button" class="lang-btn" data-lang="it">Italiano</button>
+    </div>
+  </header>
+
+  <svg class="steps" viewBox="0 0 480 20" preserveAspectRatio="none" aria-hidden="true">
+    <rect x="0"   y="4"  width="30" height="16"/>
+    <rect x="30"  y="13" width="30" height="7"/>
+    <rect x="60"  y="9"  width="30" height="11"/>
+    <rect x="90"  y="0"  width="30" height="20"/>
+    <rect x="120" y="15" width="30" height="5"/>
+    <rect x="150" y="7"  width="30" height="13"/>
+    <rect x="180" y="2"  width="30" height="18"/>
+    <rect x="210" y="12" width="30" height="8"/>
+    <rect x="240" y="6"  width="30" height="14"/>
+    <rect x="270" y="16" width="30" height="4"/>
+    <rect x="300" y="10" width="30" height="10"/>
+    <rect x="330" y="1"  width="30" height="19"/>
+    <rect x="360" y="8"  width="30" height="12"/>
+    <rect x="390" y="14" width="30" height="6"/>
+    <rect x="420" y="5"  width="30" height="15"/>
+    <rect x="450" y="11" width="30" height="9"/>
+  </svg>
+
+  <main>
+    <div class="i18n" data-lang="en">
+      <details class="flowbox">
+        <summary>1. Musical instruments</summary>
+        <div class="acc-body">
+        <p>Our production process incorporates real instruments, original recordings, MIDI programming and virtual instruments.</p>
+        <h3>Fenni's instruments</h3>
+        <ul>
+          <li>Yamaha RGX421 electric guitar.</li>
+          <li>Harley Benton 8-string guitar.</li>
+          <li>Jadine, an SG-style guitar made in Finland by Kiiras Guitars.</li>
+          <li>Dine All Gig Headless guitar.</li>
+          <li>Eko Ranger 12-string acoustic guitar.</li>
+          <li>Ibanez acoustic guitar.</li>
+        </ul>
+        <p>Fenni's guitars are left-handed.</p>
+        <h3>FX's instruments</h3>
+        <ul>
+          <li>Eko VL-480 sunburst electric guitar.</li>
+          <li>Yamaha FG310 acoustic guitar.</li>
+          <li>Hohner Blues Harp harmonica in F.</li>
+          <li>Roland F-107 digital piano.</li>
+          <li>Yamaha PSR-400 keyboard.</li>
+        </ul>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>2. Recording equipment and studio setup</summary>
+        <div class="acc-body">
+        <p>Our recording equipment and production environment have evolved from analogue recording to computer-based audio production.</p>
+        <p>The equipment used throughout our workflow includes:</p>
+        <ul>
+          <li>Cassette recorders and MC tapes.</li>
+          <li>Focusrite Scarlett 2i2 USB-C audio interface (2 in / 2 out).</li>
+          <li>Behringer U-PHORIA UMC204HD USB audio/MIDI interface (2 in / 4 out, 24-bit/192 kHz) with Midas microphone preamplifiers.</li>
+        </ul>
+        <p>The specific setup varies according to the song and the production stage.</p>
+        <h3>Multi-effects processor</h3>
+        <p>Zoom GFX-707 Guitar Effects Processor — a digital multi-effects unit used for guitar sound processing.</p>
+        <h3>Pedalboard</h3>
+        <p>Our pedalboard includes:</p>
+        <ul>
+          <li>BOSS DS-1 Distortion — distortion.</li>
+          <li>BOSS OC-3 Super Octave — octave effects.</li>
+          <li>BOSS CS-3 Compression Sustainer — compression and sustain.</li>
+          <li>Electro-Harmonix Hum Debugger — hum reduction.</li>
+          <li>TC Electronic TRIO+ — rhythm and bass accompaniment generation.</li>
+          <li>VOX wah-wah pedal — pedal-controlled filter effects.</li>
+        </ul>
+        <p>The pedalboard combines tone shaping, dynamics, distortion, pitch effects and other processing options for electric guitar.</p>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>3. Software, MIDI and audio production</summary>
+        <div class="acc-body">
+        <details class="subbox">
+          <summary>3.1 MIDI, audio and virtual instruments</summary>
+          <div class="subbody">
+        <h3>Cubase — MIDI and audio integration</h3>
+        <p>Cubase is used to integrate MIDI and audio in our production workflow. It allows us to work with MIDI input devices, including keyboards such as the Yamaha PSR-400, and to develop musical arrangements involving virtual instruments and recorded audio.</p>
+        <p>MIDI allows musical performances and note information to be recorded, edited and used to control compatible instruments and software. It is distinct from the audio signal itself.</p>
+        <h3>Yamaha PSR-400 — MIDI keyboard</h3>
+        <p>FX has used the Yamaha PSR-400 to enter MIDI information and develop arrangements involving additional instruments, connecting the keyboard to the computer-based production setup through the appropriate MIDI and audio connections.</p>
+        <h3>Virtual instruments and manual programming</h3>
+        <p>Virtual instruments are used where appropriate to develop instrumental arrangements. Bass and drum parts can be programmed manually, with the notes and rhythms determined by us by ear rather than simply relying on pre-existing sampled performances.</p>
+          </div>
+        </details>
+        <details class="subbox">
+          <summary>3.2 Audio recording and multitrack production</summary>
+          <div class="subbody">
+        <h3>Adobe Audition — earlier workflow</h3>
+        <p>Adobe Audition was used in our earlier home-studio workflow for audio editing and processing.</p>
+        <h3>Ardour — current multitrack workflow</h3>
+        <p>Ardour is our current environment for multitrack recording and audio production. It allows us to record, organize and manage multiple audio tracks within the same project.</p>
+          </div>
+        </details>
+        <details class="subbox">
+          <summary>3.3 Composition, tablature and notation software</summary>
+          <div class="subbody">
+        <h3>Guitar Pro</h3>
+        <p>Used to develop guitar tablatures, document musical parts and work on instrumental arrangements. It has also supported the manual development of bass and drum parts.</p>
+        <h3>TuxGuitar</h3>
+        <p>Used for guitar tablature and the development of instrumental parts.</p>
+        <h3>MuseScore Studio 4</h3>
+        <p>Used for music notation and score preparation.</p>
+        <p>These tools support the development and documentation of musical ideas before and during recording.</p>
+          </div>
+        </details>
+        <details class="subbox">
+          <summary>3.4 Audio processing and sound design</summary>
+          <div class="subbody">
+        <h3>Waves Central</h3>
+        <p>Used to manage Waves audio software and plugins.</p>
+        <h3>Native Instruments Reaktor 6</h3>
+        <p>A modular sound-design environment available for sound experimentation and electronic audio processing.</p>
+        <h3>Moises</h3>
+        <p>Used for audio-analysis and music-separation tasks where appropriate.</p>
+        <p>These tools form part of our broader audio and music-production toolkit. Their use depends on the requirements of individual projects.</p>
+          </div>
+        </details>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>4. Original recordings, samples and demos</summary>
+        <div class="acc-body">
+        <h3>Original recordings and samples</h3>
+        <p>Original recordings are an important component of our production process.</p>
+        <p>Guitar sounds can be derived from samples recorded using our own real guitars. Some vocal elements are based on samples of our own voices. We also record instrumental performances, including acoustic guitar, as part of the development of our musical material.</p>
+        <p>These recordings originate in our own work and can be incorporated into arrangements and subsequent production stages.</p>
+        <h3>Complete demos and pre-production</h3>
+        <p>Before generative AI is introduced, we write, arrange and record complete demos of our songs.</p>
+        <p>The demos establish the composition, lyrics, structure, instrumental arrangements and intended artistic direction. They provide the reference against which subsequent production results are evaluated.</p>
+        <p>The musical material therefore exists as a developed composition and arrangement before the AI-assisted production stage begins.</p>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>5. Generative AI and sonic and vocal rendition</summary>
+        <div class="acc-body">
+        <h3>Suno — AI-assisted production</h3>
+        <p>In our own workflow, we have used Suno to generate sonic and vocal renditions of our completed demos.</p>
+        <p>The aim is to explore different sonic characteristics, instrumental textures, vocal interpretations and production styles while retaining the identity of the original compositions.</p>
+        <p>Generated versions are compared with the original demos. We evaluate their fidelity to the intended composition, arrangement and artistic direction, selecting the versions that best reflect our creative intentions.</p>
+        <p>The results are not automatically accepted. Listening, comparison, selection and further artistic and technical checks remain integral to the process.</p>
+        <h3>Other AI tools</h3>
+        <p>Our broader creative and technical toolkit also includes Google Flow, ChatGPT, Gemini, Claude AI and Perplexity AI. These tools support different activities in our wider workflow and are not necessarily involved in generating the audio of our songs.</p>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>6. Final checks and delivery</summary>
+        <div class="acc-body">
+        <p>After selecting a suitable version, we carry out further artistic and technical checks before preparing the final master.</p>
+        <p>The finished audio is delivered to Symphonic in a lossless WAV or FLAC format, according to the applicable delivery requirements, for distribution to digital platforms.</p>
+        </div>
+      </details>
+      <p class="motto">Human-composed. Human-arranged. AI-rendered.</p>
+      <p class="outro">Our technical workflow combines original instruments and recordings, MIDI programming, digital audio production and generative AI. The AI-assisted stage follows the completion of our human-created compositions and arrangements, while the selection of the final versions remains guided by our artistic judgement.</p>
+      <figure class="photo">
+        <img src="fx-fenni-guitars-1.jpg" width="990" height="1237" alt="FX and Fenni on the sofa at home with their acoustic guitars" loading="lazy">
+        <figcaption>FX &amp; Fenni, guitars at home.</figcaption>
+      </figure>
+      <figure class="photo photo-tall">
+        <img src="instruments-collage.jpg" width="1080" height="1920" alt="Collage of our instruments: a sunburst electric guitar next to a Roland digital piano and a Marshall amplifier, a 12-string and a six-string acoustic guitar on the wall, a natural-finish SG-style guitar, three electric guitars lying together, and a Yamaha acoustic guitar on a stand" loading="lazy">
+        <figcaption>Some of our instruments.</figcaption>
+      </figure>
+    </div>
+
+    <div class="i18n" data-lang="it" hidden>
+      <details class="flowbox">
+        <summary>1. Strumenti musicali</summary>
+        <div class="acc-body">
+        <p>Il nostro processo di produzione comprende strumenti reali, registrazioni originali, programmazione MIDI e strumenti virtuali.</p>
+        <h3>Gli strumenti di Fenni</h3>
+        <ul>
+          <li>Chitarra elettrica Yamaha RGX421.</li>
+          <li>Chitarra a 8 corde Harley Benton.</li>
+          <li>Jadine, chitarra in stile SG costruita in Finlandia da Kiiras Guitars.</li>
+          <li>Chitarra headless Dine All Gig.</li>
+          <li>Chitarra acustica a 12 corde Eko Ranger.</li>
+          <li>Chitarra acustica Ibanez.</li>
+        </ul>
+        <p>Le chitarre di Fenni sono per mancini.</p>
+        <h3>Gli strumenti di FX</h3>
+        <ul>
+          <li>Chitarra elettrica Eko VL-480 sunburst.</li>
+          <li>Chitarra acustica Yamaha FG310.</li>
+          <li>Armonica Hohner Blues Harp in Fa.</li>
+          <li>Pianoforte digitale Roland F-107.</li>
+          <li>Tastiera Yamaha PSR-400.</li>
+        </ul>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>2. Attrezzatura di registrazione e studio</summary>
+        <div class="acc-body">
+        <p>La nostra attrezzatura di registrazione e il nostro ambiente di produzione si sono evoluti dalla registrazione analogica alla produzione audio al computer.</p>
+        <p>L'attrezzatura usata nel nostro flusso di lavoro comprende:</p>
+        <ul>
+          <li>Registratori a cassetta e musicassette.</li>
+          <li>Interfaccia audio USB-C Focusrite Scarlett 2i2 (2 in / 2 out).</li>
+          <li>Interfaccia audio/MIDI USB Behringer U-PHORIA UMC204HD (2 in / 4 out, 24 bit/192 kHz) con preamplificatori microfonici Midas.</li>
+        </ul>
+        <p>La configurazione specifica varia a seconda del brano e della fase di produzione.</p>
+        <h3>Processore multieffetto</h3>
+        <p>Zoom GFX-707 Guitar Effects Processor — unità multieffetto digitale usata per l'elaborazione del suono della chitarra.</p>
+        <h3>Pedaliera</h3>
+        <p>La nostra pedaliera comprende:</p>
+        <ul>
+          <li>BOSS DS-1 Distortion — distorsione.</li>
+          <li>BOSS OC-3 Super Octave — effetti di ottava.</li>
+          <li>BOSS CS-3 Compression Sustainer — compressione e sustain.</li>
+          <li>Electro-Harmonix Hum Debugger — riduzione del ronzio.</li>
+          <li>TC Electronic TRIO+ — generazione di accompagnamento ritmico e di basso.</li>
+          <li>Pedale wah-wah VOX — effetti di filtro controllati a pedale.</li>
+        </ul>
+        <p>La pedaliera combina modellazione del timbro, dinamica, distorsione, effetti di intonazione e altre opzioni di elaborazione per chitarra elettrica.</p>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>3. Software, MIDI e produzione audio</summary>
+        <div class="acc-body">
+        <details class="subbox">
+          <summary>3.1 MIDI, audio e strumenti virtuali</summary>
+          <div class="subbody">
+        <h3>Cubase — integrazione di MIDI e audio</h3>
+        <p>Cubase viene usato per integrare MIDI e audio nel nostro flusso di produzione. Permette di lavorare con dispositivi di input MIDI, comprese tastiere come la Yamaha PSR-400, e di sviluppare arrangiamenti musicali con strumenti virtuali e audio registrato.</p>
+        <p>Il MIDI permette di registrare, modificare e usare esecuzioni musicali e informazioni sulle note per controllare strumenti e software compatibili. È distinto dal segnale audio vero e proprio.</p>
+        <h3>Yamaha PSR-400 — tastiera MIDI</h3>
+        <p>FX ha usato la Yamaha PSR-400 per inserire informazioni MIDI e sviluppare arrangiamenti con strumenti aggiuntivi, collegando la tastiera al sistema di produzione al computer con le opportune connessioni MIDI e audio.</p>
+        <h3>Strumenti virtuali e programmazione manuale</h3>
+        <p>Gli strumenti virtuali vengono usati, dove opportuno, per sviluppare gli arrangiamenti strumentali. Le parti di basso e batteria possono essere programmate a mano, con note e ritmi stabiliti da noi a orecchio, senza limitarsi a usare esecuzioni campionate già esistenti.</p>
+          </div>
+        </details>
+        <details class="subbox">
+          <summary>3.2 Registrazione audio e produzione multitraccia</summary>
+          <div class="subbody">
+        <h3>Adobe Audition — il flusso di lavoro precedente</h3>
+        <p>Adobe Audition è stato usato nel nostro precedente home studio per l'editing e l'elaborazione audio.</p>
+        <h3>Ardour — il flusso multitraccia attuale</h3>
+        <p>Ardour è il nostro ambiente attuale per la registrazione multitraccia e la produzione audio. Permette di registrare, organizzare e gestire più tracce audio all'interno dello stesso progetto.</p>
+          </div>
+        </details>
+        <details class="subbox">
+          <summary>3.3 Software di composizione, tablatura e notazione</summary>
+          <div class="subbody">
+        <h3>Guitar Pro</h3>
+        <p>Usato per sviluppare tablature di chitarra, documentare le parti musicali e lavorare sugli arrangiamenti strumentali. Ha anche supportato lo sviluppo manuale delle parti di basso e batteria.</p>
+        <h3>TuxGuitar</h3>
+        <p>Usato per le tablature di chitarra e lo sviluppo di parti strumentali.</p>
+        <h3>MuseScore Studio 4</h3>
+        <p>Usato per la notazione musicale e la preparazione delle partiture.</p>
+        <p>Questi strumenti supportano lo sviluppo e la documentazione delle idee musicali prima e durante la registrazione.</p>
+          </div>
+        </details>
+        <details class="subbox">
+          <summary>3.4 Elaborazione audio e sound design</summary>
+          <div class="subbody">
+        <h3>Waves Central</h3>
+        <p>Usato per gestire il software e i plugin audio Waves.</p>
+        <h3>Native Instruments Reaktor 6</h3>
+        <p>Un ambiente modulare di sound design, disponibile per la sperimentazione sonora e l'elaborazione audio elettronica.</p>
+        <h3>Moises</h3>
+        <p>Usato, dove opportuno, per attività di analisi audio e separazione delle tracce musicali.</p>
+        <p>Questi strumenti fanno parte del nostro più ampio set di strumenti per l'audio e la produzione musicale. Il loro uso dipende dalle esigenze dei singoli progetti.</p>
+          </div>
+        </details>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>4. Registrazioni originali, campioni e demo</summary>
+        <div class="acc-body">
+        <h3>Registrazioni originali e campioni</h3>
+        <p>Le registrazioni originali sono una componente importante del nostro processo di produzione.</p>
+        <p>I suoni di chitarra possono derivare da campioni registrati con le nostre chitarre reali. Alcuni elementi vocali sono basati su campioni delle nostre stesse voci. Registriamo anche esecuzioni strumentali, compresa la chitarra acustica, nell'ambito dello sviluppo del nostro materiale musicale.</p>
+        <p>Queste registrazioni nascono dal nostro lavoro e possono essere inserite negli arrangiamenti e nelle fasi successive di produzione.</p>
+        <h3>Demo complete e pre-produzione</h3>
+        <p>Prima di introdurre l'IA generativa, scriviamo, arrangiamo e registriamo demo complete delle nostre canzoni.</p>
+        <p>Le demo stabiliscono la composizione, il testo, la struttura, gli arrangiamenti strumentali e la direzione artistica voluta. Costituiscono il riferimento rispetto al quale vengono valutati i risultati delle fasi di produzione successive.</p>
+        <p>Il materiale musicale esiste quindi come composizione e arrangiamento già sviluppati prima che inizi la fase di produzione assistita dall'IA.</p>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>5. IA generativa e resa sonora e vocale</summary>
+        <div class="acc-body">
+        <h3>Suno — produzione assistita dall'IA</h3>
+        <p>Nel nostro flusso di lavoro abbiamo usato Suno per generare rese sonore e vocali delle nostre demo complete.</p>
+        <p>L'obiettivo è esplorare diverse caratteristiche sonore, texture strumentali, interpretazioni vocali e stili di produzione, mantenendo l'identità delle composizioni originali.</p>
+        <p>Le versioni generate vengono confrontate con le demo originali. Ne valutiamo la fedeltà alla composizione, all'arrangiamento e alla direzione artistica voluti, scegliendo le versioni che riflettono meglio le nostre intenzioni creative.</p>
+        <p>I risultati non vengono accettati automaticamente. Ascolto, confronto, selezione e ulteriori controlli artistici e tecnici restano parti integranti del processo.</p>
+        <h3>Altri strumenti di IA</h3>
+        <p>Il nostro set di strumenti creativi e tecnici più ampio comprende anche Google Flow, ChatGPT, Gemini, Claude AI e Perplexity AI. Questi strumenti supportano attività diverse del nostro flusso di lavoro più ampio e non sono necessariamente coinvolti nella generazione dell'audio delle nostre canzoni.</p>
+        </div>
+      </details>
+      <details class="flowbox">
+        <summary>6. Controlli finali e consegna</summary>
+        <div class="acc-body">
+        <p>Dopo aver scelto una versione adatta, eseguiamo ulteriori controlli artistici e tecnici prima di preparare il master finale.</p>
+        <p>L'audio finito viene consegnato a Symphonic in formato WAV o FLAC lossless, secondo i requisiti di consegna applicabili, per la distribuzione sulle piattaforme digitali.</p>
+        </div>
+      </details>
+      <p class="motto">Composte dall'uomo. Arrangiate dall'uomo. Rese dall'IA.</p>
+      <p class="outro">Il nostro flusso di lavoro tecnico combina strumenti e registrazioni originali, programmazione MIDI, produzione audio digitale e IA generativa. La fase assistita dall'IA segue il completamento delle nostre composizioni e dei nostri arrangiamenti creati da esseri umani, mentre la scelta delle versioni finali resta guidata dal nostro giudizio artistico.</p>
+      <figure class="photo">
+        <img src="fx-fenni-guitars-1.jpg" width="990" height="1237" alt="FX e Fenni sul divano di casa con le loro chitarre acustiche" loading="lazy">
+        <figcaption>FX &amp; Fenni, chitarre in salotto.</figcaption>
+      </figure>
+      <figure class="photo photo-tall">
+        <img src="instruments-collage.jpg" width="1080" height="1920" alt="Collage dei nostri strumenti: una chitarra elettrica sunburst accanto a un pianoforte digitale Roland e a un amplificatore Marshall, una chitarra a 12 corde e una acustica a sei corde appese al muro, una chitarra in stile SG color legno naturale, tre chitarre elettriche appoggiate insieme e una chitarra acustica Yamaha su supporto" loading="lazy">
+        <figcaption>Alcuni dei nostri strumenti.</figcaption>
+      </figure>
+    </div>
+  </main>
+
+  <nav class="songnav">
+    <a class="i18n" data-lang="en" href="process.html">← Process</a>
+    <a class="i18n" data-lang="it" href="process.html" hidden>← Processo</a>
+    <a href="index.html">Home →</a>
+  </nav>
+
+  <footer>
+    <p>Lyrics, music and arrangements by FX &amp; Fenni.</p>
+    <p>© <span id="anno">2026</span> Alias4us. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script>
+document.getElementById('anno').textContent=new Date().getFullYear();
+(function(){
+  var buttons=document.querySelectorAll('.lang-btn');
+  var blocks=document.querySelectorAll('.i18n');
+
+  function setLang(lang){
+    document.documentElement.lang=lang;
+    buttons.forEach(function(b){
+      b.classList.toggle('is-active',b.getAttribute('data-lang')===lang);
+    });
+    blocks.forEach(function(el){
+      el.hidden=el.getAttribute('data-lang')!==lang;
+    });
+  }
+
+  function detectLang(){
+    try{
+      var saved=sessionStorage.getItem('a4u-lang');
+      if(saved==='it'||saved==='en') return saved;
+    }catch(e){}
+    var langs=navigator.languages||[navigator.language||'en'];
+    for(var i=0;i<langs.length;i++){
+      if(langs[i].toLowerCase().indexOf('it')===0) return 'it';
+    }
+    return 'en';
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var l=btn.getAttribute('data-lang');
+      setLang(l);
+      try{sessionStorage.setItem('a4u-lang',l);}catch(e){}
+    });
+  });
+  setLang(detectLang());
+})();
+</script>
+</body>
+</html>
