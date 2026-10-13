@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Process — Alias4us</title>
+<meta name="description" content="How Alias4us make their music: human-composed songs, demos recorded by FX and Fenni, and generative AI used only for the final sonic and vocal rendition.">
+
+<meta property="og:title" content="Our Process — Alias4us">
+<meta property="og:description" content="Human-composed, AI-rendered: how Alias4us songs are made.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alias4us.github.io/process.html">
+<meta property="og:image" content="https://alias4us.github.io/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#0B1C31;
+  --ink:#EDEEF2;
+  --panel:#16304F;
+  --line:#2F4C6E;
+  --mute:#7C93AC;
+  --red:#EE1122;
+  --chrome:#B9C4CE;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Space Grotesk",system-ui,sans-serif;
+  font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:26px 0 0;
+}
+.back{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Space Mono",monospace;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mute);text-decoration:none;
+  transition:color .2s ease,transform .2s ease;
+}
+.back:hover{color:var(--ink);transform:translateX(-3px)}
+.bandmark{
+  font-family:"Syne",sans-serif;font-weight:800;
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);text-decoration:none;
+}
+.bandmark:hover{color:var(--ink)}
+
+.eyebrow{
+  font-family:"Space Mono",monospace;font-weight:700;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red);margin:52px 0 14px;
+}
+h1{
+  font-family:"Syne",sans-serif;font-weight:800;
+  font-size:clamp(2.1rem,7.4vw,3.6rem);
+  letter-spacing:-.03em;line-height:1;margin:0 0 8px;
+  text-wrap:balance;
+}
+h1 span{color:var(--chrome)}
+
+.steps{display:block;width:100%;height:34px;margin:44px 0}
+.steps rect{fill:var(--line)}
+
+.prose{max-width:60ch}
+.prose p{margin:0 0 22px;font-size:clamp(1rem,2.1vw,1.1rem);line-height:1.75}
+.prose .closing{
+  margin-top:38px;padding-top:26px;border-top:1px solid var(--line);
+  font-family:"Syne",sans-serif;font-weight:600;
+  font-size:clamp(1.2rem,3.4vw,1.55rem);line-height:1.35;letter-spacing:-.01em;
+}
+.prose .closing strong{font-weight:800;color:var(--red)}
+
+.songnav{
+  display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
+  margin-top:48px;padding:24px 0;border-top:1px solid var(--line);
+}
+.songnav a{
+  font-family:"Space Mono",monospace;font-size:13px;
+  letter-spacing:.04em;text-decoration:none;color:var(--mute);
+  transition:color .2s ease;
+}
+.songnav a:hover{color:var(--ink)}
+
+footer{
+  padding:6px 0 46px;
+  font-family:"Space Mono",monospace;font-size:12px;
+  color:var(--mute);line-height:1.8;
+}
+footer p{margin:0 0 4px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="topbar">
+    <a class="back" href="index.html">
+      <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true">
+        <path d="M13 5H1M5 1 1 5l4 4" stroke="currentColor" stroke-width="1.6"
+              fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Home
+    </a>
+    <a class="bandmark" href="index.html">Alias4us</a>
+  </nav>
+
+  <header>
+    <p class="eyebrow">// Process</p>
+    <h1>Human-composed, <span>AI-rendered.</span></h1>
+  </header>
+
+  <svg class="steps" viewBox="0 0 480 20" preserveAspectRatio="none" aria-hidden="true">
+    <rect x="0"   y="4"  width="30" height="16"/>
+    <rect x="30"  y="13" width="30" height="7"/>
+    <rect x="60"  y="9"  width="30" height="11"/>
+    <rect x="90"  y="0"  width="30" height="20"/>
+    <rect x="120" y="15" width="30" height="5"/>
+    <rect x="150" y="7"  width="30" height="13"/>
+    <rect x="180" y="2"  width="30" height="18"/>
+    <rect x="210" y="12" width="30" height="8"/>
+    <rect x="240" y="6"  width="30" height="14"/>
+    <rect x="270" y="16" width="30" height="4"/>
+    <rect x="300" y="10" width="30" height="10"/>
+    <rect x="330" y="1"  width="30" height="19"/>
+    <rect x="360" y="8"  width="30" height="12"/>
+    <rect x="390" y="14" width="30" height="6"/>
+    <rect x="420" y="5"  width="30" height="15"/>
+    <rect x="450" y="11" width="30" height="9"/>
+  </svg>
+
+  <main class="prose">
+    <p>Alias4us are Filippo Ninni (Fenni) and Fabio Vanni (FX), two musicians who have been writing, arranging and developing original music together for more than 25 years.</p>
+
+    <p>Their songs are written, arranged and recorded as complete demos by Fenni and FX before generative AI is introduced for their final sonic and vocal rendition.</p>
+
+    <p>Their creative process has evolved alongside music technology itself. From cassette recordings in the 1990s to digital audio workstations, guitars and amplifiers, effects pedals, microphones, external audio interfaces, digital mixers, multitrack recording, Cubase, Guitar Pro and virtual instruments, each technological step has expanded their production possibilities without replacing their creative involvement.</p>
+
+    <p>Their music is grounded in original human-created material. Instrumental parts are developed and arranged by the musicians themselves, including bass and drum parts programmed manually when using virtual instruments. Original recordings also play an important role: guitar sounds can be derived from samples recorded using their own real instruments, and some vocal elements are based on samples of their own voices.</p>
+
+    <p>Balancing their musical ambitions with professional careers, family life and everyday responsibilities has often left them with limited time and resources to complete and produce their music through conventional methods. Generative AI has offered them a practical way to overcome some of these constraints, allowing them to bring compositions developed over many years to their final production stage and share them with an audience.</p>
+
+    <p>Today, AI-assisted music production represents the latest stage in this evolution. Alias4us use generative AI to develop sonic and vocal renditions of their completed compositions, exploring timbres, vocal interpretations and production styles while retaining artistic control over the selection of the final versions.</p>
+
+    <p>In their own production process, they have used Suno for this purpose. Generated versions are carefully compared with the original demos, and only those judged sufficiently faithful to the intended composition, arrangement and artistic identity are selected. Further artistic and technical checks precede the delivery of the final masters to digital distribution platforms.</p>
+
+    <p>For Alias4us, AI is not the starting point of composition, but a production tool introduced after the human creative work has taken shape. It enables them to continue pursuing a musical project that has accompanied them for decades, despite the practical constraints of their lives.</p>
+
+    <p class="closing">From cassette tapes to generative AI, the technology has changed. <strong>The music begins with the musicians.</strong></p>
+  </main>
+
+  <nav class="songnav">
+    <a href="index.html">← Home</a>
+    <a href="ourstory.html">Our Story →</a>
+  </nav>
+
+  <footer>
+    <p>Lyrics, music and arrangements by FX &amp; Fenni.</p>
+    <p>© <span id="anno">2026</span> Alias4us. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script>document.getElementById('anno').textContent=new Date().getFullYear();</script>
+</body>
+</html>
