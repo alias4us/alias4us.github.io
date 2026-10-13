@@ -99,6 +99,18 @@ h1 span{color:var(--chrome)}
 }
 .songnav a:hover{color:var(--ink)}
 
+/* ---------- lingua ---------- */
+.lang-toggle{display:inline-flex;gap:8px;margin:26px 0 0}
+.lang-btn{
+  font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;
+  padding:8px 18px;border-radius:999px;
+  border:1px solid var(--line);background:transparent;color:var(--mute);
+  cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease;
+}
+.lang-btn:hover{border-color:var(--red);color:var(--ink)}
+.lang-btn.is-active{border-color:var(--red);color:var(--ink);background:rgba(238,17,34,.1)}
+.i18n[hidden]{display:none}
+
 footer{
   padding:6px 0 46px;
   font-family:"Space Mono",monospace;font-size:12px;
@@ -124,7 +136,13 @@ footer p{margin:0 0 4px}
 
   <header>
     <p class="eyebrow">// Process</p>
-    <h1>Human-composed, <span>AI-rendered.</span></h1>
+    <h1 class="i18n" data-lang="en">Human-composed, <span>AI-rendered.</span></h1>
+    <h1 class="i18n" data-lang="it" hidden>Composta dall'uomo, <span>resa dall'IA.</span></h1>
+
+    <div class="lang-toggle" role="group" aria-label="Choose language">
+      <button type="button" class="lang-btn is-active" data-lang="en">English</button>
+      <button type="button" class="lang-btn" data-lang="it">Italiano</button>
+    </div>
   </header>
 
   <svg class="steps" viewBox="0 0 480 20" preserveAspectRatio="none" aria-hidden="true">
@@ -147,6 +165,7 @@ footer p{margin:0 0 4px}
   </svg>
 
   <main class="prose">
+    <div class="i18n" data-lang="en">
     <p>Alias4us are Filippo Ninni (Fenni) and Fabio Vanni (FX), two musicians who have been writing, arranging and developing original music together for more than 25 years.</p>
 
     <p>Their songs are written, arranged and recorded as complete demos by Fenni and FX before generative AI is introduced for their final sonic and vocal rendition.</p>
@@ -164,11 +183,33 @@ footer p{margin:0 0 4px}
     <p>For Alias4us, AI is not the starting point of composition, but a production tool introduced after the human creative work has taken shape. It enables them to continue pursuing a musical project that has accompanied them for decades, despite the practical constraints of their lives.</p>
 
     <p class="closing">From cassette tapes to generative AI, the technology has changed. <strong>The music begins with the musicians.</strong></p>
+    </div>
+
+    <div class="i18n" data-lang="it" hidden>
+    <p>Alias4us sono Filippo Ninni (Fenni) e Fabio Vanni (FX), due musicisti che da oltre 25 anni scrivono, arrangiano e sviluppano insieme musica originale.</p>
+
+    <p>Le loro canzoni vengono scritte, arrangiate e registrate come demo complete da Fenni e FX prima che intervenga l'intelligenza artificiale generativa per la resa sonora e vocale finale.</p>
+
+    <p>Il loro processo creativo si è evoluto di pari passo con la tecnologia musicale. Dalle registrazioni su cassetta dei primi anni Duemila alle workstation audio digitali, passando per chitarre e amplificatori, pedali d'effetto, microfoni, interfacce audio esterne, mixer digitali, registrazione multitraccia, Cubase, Guitar Pro e strumenti virtuali, ogni passo tecnologico ha ampliato le loro possibilità di produzione senza sostituire il loro coinvolgimento creativo.</p>
+
+    <p>La loro musica si fonda su materiale originale creato da esseri umani. Le parti strumentali sono sviluppate e arrangiate dai musicisti stessi, comprese le parti di basso e batteria programmate a mano quando usano strumenti virtuali. Anche le registrazioni originali hanno un ruolo importante: i suoni di chitarra possono derivare da campioni registrati con i loro strumenti reali, e alcuni elementi vocali sono basati su campioni delle loro stesse voci.</p>
+
+    <p>Conciliare le ambizioni musicali con carriere professionali, vita familiare e responsabilità quotidiane ha spesso lasciato loro poco tempo e poche risorse per completare e produrre la loro musica con metodi convenzionali. L'IA generativa ha offerto un modo pratico per superare alcuni di questi vincoli, permettendo di portare composizioni sviluppate nel corso di molti anni alla fase finale di produzione e di condividerle con il pubblico.</p>
+
+    <p>Oggi la produzione musicale assistita dall'IA rappresenta l'ultima tappa di questa evoluzione. Gli Alias4us usano l'IA generativa per sviluppare rese sonore e vocali delle loro composizioni già complete, esplorando timbri, interpretazioni vocali e stili di produzione e mantenendo il controllo artistico sulla scelta delle versioni finali.</p>
+
+    <p>Nel loro processo di produzione hanno usato Suno a questo scopo. Le versioni generate vengono confrontate con attenzione con le demo originali, e vengono selezionate solo quelle ritenute sufficientemente fedeli alla composizione, all'arrangiamento e all'identità artistica che avevano in mente. Ulteriori controlli artistici e tecnici precedono la consegna dei master finali alle piattaforme di distribuzione digitale.</p>
+
+    <p>Per gli Alias4us l'IA non è il punto di partenza della composizione, ma uno strumento di produzione introdotto dopo che il lavoro creativo umano ha preso forma. Permette loro di continuare a portare avanti un progetto musicale che li accompagna da decenni, nonostante i vincoli pratici della loro vita.</p>
+
+    <p class="closing">Dalle cassette all'IA generativa, la tecnologia è cambiata. <strong>La musica comincia dai musicisti.</strong></p>
+    </div>
   </main>
 
   <nav class="songnav">
     <a href="index.html">← Home</a>
-    <a href="ourstory.html">Our Story →</a>
+    <a class="i18n" data-lang="en" href="ourstory.html">Our Story →</a>
+    <a class="i18n" data-lang="it" href="ourstory.html" hidden>La nostra storia →</a>
   </nav>
 
   <footer>
@@ -178,6 +219,35 @@ footer p{margin:0 0 4px}
 
 </div>
 
-<script>document.getElementById('anno').textContent=new Date().getFullYear();</script>
+<script>
+document.getElementById('anno').textContent=new Date().getFullYear();
+(function(){
+  var buttons=document.querySelectorAll('.lang-btn');
+  var blocks=document.querySelectorAll('.i18n');
+
+  function setLang(lang){
+    document.documentElement.lang=lang;
+    buttons.forEach(function(b){
+      b.classList.toggle('is-active',b.getAttribute('data-lang')===lang);
+    });
+    blocks.forEach(function(el){
+      el.hidden=el.getAttribute('data-lang')!==lang;
+    });
+  }
+
+  function detectLang(){
+    var langs=navigator.languages||[navigator.language||'en'];
+    for(var i=0;i<langs.length;i++){
+      if(langs[i].toLowerCase().indexOf('it')===0) return 'it';
+    }
+    return 'en';
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(){setLang(btn.getAttribute('data-lang'));});
+  });
+  setLang(detectLang());
+})();
+</script>
 </body>
 </html>
