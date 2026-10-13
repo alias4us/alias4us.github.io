@@ -111,6 +111,16 @@ h1 span{color:var(--chrome)}
 .lang-btn.is-active{border-color:var(--red);color:var(--ink);background:rgba(238,17,34,.1)}
 .i18n[hidden]{display:none}
 
+.more-link{
+  display:inline-block;margin-top:30px;padding:11px 20px;
+  border:1px solid var(--line);border-radius:999px;
+  font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.04em;
+  text-decoration:none;
+  transition:border-color .2s ease,transform .2s ease,color .2s ease;
+}
+.more-link:hover{border-color:var(--red);transform:translateY(-2px)}
+.more-link span{color:var(--red)}
+
 footer{
   padding:6px 0 46px;
   font-family:"Space Mono",monospace;font-size:12px;
@@ -183,6 +193,8 @@ footer p{margin:0 0 4px}
     <p>For Alias4us, AI is not the starting point of composition, but a production tool introduced after the human creative work has taken shape. It enables them to continue pursuing a musical project that has accompanied them for decades, despite the practical constraints of their lives.</p>
 
     <p class="closing">From cassette tapes to generative AI, the technology has changed. <strong>The music begins with the musicians.</strong></p>
+
+    <a class="more-link" href="technical-process.html">Technical details: instruments, software and workflow <span aria-hidden="true">→</span></a>
     </div>
 
     <div class="i18n" data-lang="it" hidden>
@@ -203,6 +215,8 @@ footer p{margin:0 0 4px}
     <p>Per gli Alias4us l'IA non è il punto di partenza della composizione, ma uno strumento di produzione introdotto dopo che il lavoro creativo umano ha preso forma. Permette loro di continuare a portare avanti un progetto musicale che li accompagna da decenni, nonostante i vincoli pratici della loro vita.</p>
 
     <p class="closing">Dalle cassette all'IA generativa, la tecnologia è cambiata. <strong>La musica comincia dai musicisti.</strong></p>
+
+    <a class="more-link" href="technical-process.html">Dettagli tecnici: strumenti, software e flusso di lavoro <span aria-hidden="true">→</span></a>
     </div>
   </main>
 
@@ -236,6 +250,10 @@ document.getElementById('anno').textContent=new Date().getFullYear();
   }
 
   function detectLang(){
+    try{
+      var saved=sessionStorage.getItem('a4u-lang');
+      if(saved==='it'||saved==='en') return saved;
+    }catch(e){}
     var langs=navigator.languages||[navigator.language||'en'];
     for(var i=0;i<langs.length;i++){
       if(langs[i].toLowerCase().indexOf('it')===0) return 'it';
@@ -244,7 +262,11 @@ document.getElementById('anno').textContent=new Date().getFullYear();
   }
 
   buttons.forEach(function(btn){
-    btn.addEventListener('click',function(){setLang(btn.getAttribute('data-lang'));});
+    btn.addEventListener('click',function(){
+      var l=btn.getAttribute('data-lang');
+      setLang(l);
+      try{sessionStorage.setItem('a4u-lang',l);}catch(e){}
+    });
   });
   setLang(detectLang());
 })();
