@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stop the Race — Alias4us</title>
+<meta name="description" content="Stop the Race, the new single by Alias4us, coming 12 November 2026. Read the lyrics and the story behind the song and its artwork.">
+
+<meta property="og:title" content="Stop the Race — Alias4us">
+<meta property="og:description" content="New single, coming 12 November 2026. Lyrics and the story behind the song and its artwork.">
+<meta property="og:type" content="music.song">
+<meta property="og:url" content="https://alias4us.github.io/stop-the-race.html">
+<meta property="og:image" content="https://alias4us.github.io/stop-the-race-cover.jpg">
+<meta property="og:image:width" content="1254">
+<meta property="og:image:height" content="1254">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#0B1C31;--ink:#EDEEF2;--panel:#16304F;--line:#2F4C6E;
+  --mute:#7C93AC;--red:#EE1122;--chrome:#B9C4CE;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Space Grotesk",system-ui,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:26px 0 0}
+.back{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mute);text-decoration:none;transition:color .2s ease,transform .2s ease;
+}
+.back:hover{color:var(--ink);transform:translateX(-3px)}
+.bandmark{
+  font-family:"Syne",sans-serif;font-weight:800;font-size:13px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mute);text-decoration:none;
+}
+.bandmark:hover{color:var(--ink)}
+
+.eyebrow{
+  font-family:"Space Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--red);margin:52px 0 14px;
+}
+h1{
+  font-family:"Syne",sans-serif;font-weight:800;
+  font-size:clamp(2.5rem,9vw,4.4rem);letter-spacing:-.03em;line-height:.96;margin:0 0 20px;
+  text-shadow:-3px -2px 0 var(--red),3px 2px 0 var(--chrome);
+}
+.credits{
+  font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.08em;
+  color:var(--mute);margin:0 0 26px;line-height:1.8;
+}
+
+.cover{margin:0 0 22px;max-width:540px}
+.player{border-radius:12px;overflow:hidden;background:var(--panel);min-height:152px;max-width:540px}
+.player iframe{display:block;width:100%;border:0}
+.spotify-link{margin:12px 0 0;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em}
+.spotify-link a{color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .2s ease,border-color .2s ease}
+.spotify-link a:hover{color:var(--ink);border-color:var(--red)}
+.cover img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
+
+.lang-toggle{display:inline-flex;gap:8px;margin:26px 0 0}
+.lang-btn{
+  font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;
+  padding:8px 18px;border-radius:999px;
+  border:1px solid var(--line);background:transparent;color:var(--mute);
+  cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease;
+}
+.lang-btn:hover{border-color:var(--red);color:var(--ink)}
+.lang-btn.is-active{border-color:var(--red);color:var(--ink);background:rgba(238,17,34,.1)}
+.i18n[hidden]{display:none}
+
+.steps{display:block;width:100%;height:34px;margin:48px 0}
+.steps rect{fill:var(--line)}
+
+h2{
+  font-family:"Space Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mute);margin:0 0 24px;
+}
+.lyrics{
+  max-width:46ch;
+  font-size:clamp(1.02rem,2.2vw,1.16rem);line-height:1.9;
+}
+.lyrics .stanza{margin:0 0 30px;white-space:pre-line}
+.lyrics .stanza:last-child{margin-bottom:0}
+
+/* ---------- finestre a tendina ---------- */
+.accs{margin-top:0}
+.lyrics-h{margin-top:56px}
+.acc{
+  max-width:62ch;margin:0 0 12px;
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background:rgba(22,48,79,.35);transition:border-color .2s ease;
+}
+.acc:hover,.acc[open]{border-color:var(--red)}
+.acc > summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 20px;
+  font-family:"Space Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink);
+}
+.acc > summary::-webkit-details-marker{display:none}
+.acc > summary::after{
+  content:"";flex:none;width:9px;height:9px;
+  border-right:2px solid var(--red);border-bottom:2px solid var(--red);
+  transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s ease;
+}
+.acc[open] > summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.acc[open] > summary{border-bottom:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){.acc > summary::after{transition:none}}
+
+.acc-body{padding:6px 22px 20px}
+.acc-body > :first-child{margin-top:16px}
+.acc-body .lead{
+  margin:0 0 6px;font-family:"Syne",sans-serif;font-weight:600;
+  font-size:clamp(1.1rem,2.6vw,1.3rem);line-height:1.4;letter-spacing:-.01em;color:var(--ink);
+}
+.acc-body h3{
+  font-family:"Syne",sans-serif;font-weight:600;
+  font-size:clamp(1.05rem,2.4vw,1.2rem);letter-spacing:-.01em;margin:28px 0 8px;
+}
+.acc-body p{margin:0 0 14px;font-size:clamp(.98rem,2vw,1.05rem);line-height:1.72}
+.acc-body .end{
+  margin:22px 0 4px;font-family:"Space Mono",monospace;font-weight:700;
+  font-size:13px;letter-spacing:.06em;color:var(--red);
+}
+
+.songnav{
+  display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
+  margin-top:48px;padding:24px 0;border-top:1px solid var(--line);
+}
+.songnav a{
+  font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.04em;
+  text-decoration:none;color:var(--mute);transition:color .2s ease;
+}
+.songnav a:hover{color:var(--ink)}
+footer{padding:6px 0 46px;font-family:"Space Mono",monospace;font-size:12px;color:var(--mute);line-height:1.8}
+footer p{margin:0 0 4px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="topbar">
+    <a class="back" href="index.html#brani">
+      <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true">
+        <path d="M13 5H1M5 1 1 5l4 4" stroke="currentColor" stroke-width="1.6"
+              fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="i18n" data-lang="en">All songs</span><span class="i18n" data-lang="it" hidden>Tutti i brani</span>
+    </a>
+    <a class="bandmark" href="index.html">Alias4us</a>
+  </nav>
+
+  <header>
+    <p class="eyebrow"><span class="i18n" data-lang="en">Alias4us — Preview</span><span class="i18n" data-lang="it" hidden>Alias4us — Anteprima</span></p>
+    <h1>Stop the Race</h1>
+    <p class="credits"><span class="i18n" data-lang="en">Coming 12 November 2026 · Lyrics, music and arrangements: FX &amp; Fenni</span><span class="i18n" data-lang="it" hidden>In uscita il 12 novembre 2026 · Testo, musica e arrangiamenti: FX &amp; Fenni</span></p>
+
+    <figure class="cover">
+      <img class="i18n" data-lang="en" src="stop-the-race-cover.jpg" width="1254" height="1254" alt="Artwork for Stop the Race: a stone Saturn devouring his son on a tower of black and mirrored tiles, a winged child on a cloud holding planets, and a red balloon rising between them at sunset">
+      <img class="i18n" data-lang="it" src="stop-the-race-cover.jpg" width="1254" height="1254" alt="Copertina di Stop the Race: un Saturno di pietra che divora il figlio su una torre di tessere nere e a specchio, un bambino alato su una nuvola con dei pianeti tra le braccia e un palloncino rosso che sale tra i due al tramonto" hidden>
+    </figure>
+
+    <div class="player">
+      <iframe
+        src="https://open.spotify.com/embed/album/4eU5iLRkxMpZfHp27F1iT2?utm_source=generator&amp;theme=0"
+        width="100%" height="152"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="Stop the Race on Spotify"></iframe>
+    </div>
+    <p class="spotify-link"><a href="https://open.spotify.com/intl-it/album/4eU5iLRkxMpZfHp27F1iT2?si=VR1NjOJUTVGDbwoXDSjoLQ" target="_blank" rel="noopener"><span class="i18n" data-lang="en">Open on Spotify ↗</span><span class="i18n" data-lang="it" hidden>Apri su Spotify ↗</span></a></p>
+
+    <div class="lang-toggle" role="group" aria-label="Choose language">
+      <button type="button" class="lang-btn is-active" data-lang="en">English</button>
+      <button type="button" class="lang-btn" data-lang="it">Italiano</button>
+    </div>
+  </header>
+
+  <svg class="steps" viewBox="0 0 480 20" preserveAspectRatio="none" aria-hidden="true">
+    <rect x="0" y="4" width="30" height="16"/>
+    <rect x="30" y="13" width="30" height="7"/>
+    <rect x="60" y="9" width="30" height="11"/>
+    <rect x="90" y="0" width="30" height="20"/>
+    <rect x="120" y="15" width="30" height="5"/>
+    <rect x="150" y="7" width="30" height="13"/>
+    <rect x="180" y="2" width="30" height="18"/>
+    <rect x="210" y="12" width="30" height="8"/>
+    <rect x="240" y="6" width="30" height="14"/>
+    <rect x="270" y="16" width="30" height="4"/>
+    <rect x="300" y="10" width="30" height="10"/>
+    <rect x="330" y="1" width="30" height="19"/>
+    <rect x="360" y="8" width="30" height="12"/>
+    <rect x="390" y="14" width="30" height="6"/>
+    <rect x="420" y="5" width="30" height="15"/>
+    <rect x="450" y="11" width="30" height="9"/>
+  </svg>
+
+  <main>
+    <div class="i18n accs" data-lang="en">
+      <details class="acc">
+        <summary>About the lyrics</summary>
+        <div class="acc-body">
+          <p class="lead">Predicting what happens next and understanding why it happens are two different efforts. The song lives in the gap between them.</p>
+          <h3>Waiting for the event</h3>
+          <p>The first verse opens with someone waiting for “the next event in life” while a second voice answers that it is already too late. Nobody knows how to measure that event. It stays “latent and unknown”, and its “secret temporal role” can only be waited for. The questions that close the verse (“How will we know it's true? And when it is really time to go?”) are left without an answer.</p>
+          <p>The second verse replays the scene with the signs reversed. The waiting is over: “the right time is now”. The unknown is still unknown, but the speaker acts anyway, and the question turns into a statement: “Now we do know it's true.” The “secret temporal role” has become a “temporal bow”: time, for a moment, bends instead of just running.</p>
+          <h3>The emergent trace</h3>
+          <p>In the chorus the speaker looks for “the emergent trace”, using “dead times”. In complex systems, collective behaviour comes out of interactions that cannot be read off any single component, and research often starts from a trace of that kind: a signal that keeps coming back, an anomaly nobody asked for. Dead times, the pauses in which nothing seems to happen, are where it can be followed.</p>
+          <h3>The crazy train</h3>
+          <p>“Risky patterns in a crazy train”: a pattern can describe what has already happened without saying where things are going, and a model taken for the track ends up deciding the ride. The bridge leans the same way. It asks for a law that keeps collapses from going “untold”, an account of why things give way, and then turns down plain obedience: “Obey, it's a shame. Diverge from the same old world.”</p>
+          <h3>Drinking from the rain</h3>
+          <p>The last chorus runs three lines longer and ends with “Rather than being obsessed with what we do anticipate, we should learn to drink from the rain.” Rain comes on its own schedule. Drinking it takes attention, and a willingness to stand on the receiving end instead of the controlling one.</p>
+          <p>Nothing in the song turns against models or forecasts. What it questions is the habit of looking at the world only to get ahead of it, and what that habit costs in curiosity. To stop the race is a way of going on searching.</p>
+          <p class="end">Stop the race, keep searching.</p>
+        </div>
+      </details>
+      <details class="acc">
+        <summary>About the artwork</summary>
+        <div class="acc-body">
+          <p class="lead">A stone Saturn devouring his son, a winged child holding planets, and a red balloon between them.</p>
+          <p>The cover rests on an old pairing of ideas. On the left, Kronos, Saturn in Roman myth, grips an infant and eats it, after Goya's <em>Saturn Devouring His Son</em>, painted between 1819 and 1823 on a wall of the artist's house outside Madrid. On the right, sitting on a cloud at sunset, a winged child, Kairos, hugs a heap of spheres: a banded gas giant, a red planet, an Earth, a few small moons. Between the two a red balloon rises, its ribbon curling.</p>
+          <p>The wall Kronos is carved into is a lattice of black and mirrored tiles, like a pixel grid coming loose, and the mirrors pick up the same golden light as the sky.</p>
+          <h3>Kronos: the time that consumes</h3>
+          <p>Chronological time orders events, measures duration and gives a life its frame. It also consumes whatever it has measured. When every hour is judged by output and speed, it starts to look like Goya's god, already reaching for the next one. The race has no finish line: there is always another deadline, another forecast.</p>
+          <h3>Kairos: the right moment</h3>
+          <p>For the Greeks, Kairos was the opportune moment, a matter of when rather than how long. A single observation can redirect a research project, a single meeting can redirect a life. Kairos cannot be summoned. It has to be recognised when it arrives, which may be why the artwork makes him small and fragile. The second verse says it in plain words: “the right time is now”.</p>
+          <h3>The worlds in his arms</h3>
+          <p>The spheres stand for the multiplicity of the real: systems, relationships and trajectories that no single point of view can cover. A child hugging them suggests a way of facing complexity: keep them close, look at them, and don't expect to squeeze them into one formula or to predict every outcome. It is the attitude of someone searching for an “emergent trace”.</p>
+          <h3>The red balloon</h3>
+          <p>Light, red, made to last a short time, it rises toward the sun. It is the same balloon that floats beside the Alias4us logo. It doesn't settle the quarrel between the two times, but it shows that another way of living in the world is still open. Its fragility is part of its value: something can be temporary and matter just as much.</p>
+          <h3>A tower of pixels</h3>
+          <p>Our days are increasingly paced by digital systems that speed up communication, decisions and the production of information. They let us process more data and anticipate more events, and they multiply the demand for speed as well. The mirrored tower brings the myth into the present: a Kronos that promises to save time while asking us to run faster. The open question is whether our tools stay at the service of curiosity, or whether speed becomes the goal.</p>
+          <p>The link with the song is conceptual rather than literal. The lyrics ask for curiosity in place of the urge to anticipate, and the cover plays out the same idea in myth. Kronos and Kairos are not enemies: clock time is the ground in which the right moments grow, and the trouble starts when only the clock counts.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="i18n accs" data-lang="it" hidden>
+      <details class="acc">
+        <summary>Sul testo</summary>
+        <div class="acc-body">
+          <p class="lead">Prevedere cosa succederà e capire perché succede sono due imprese diverse. La canzone sta nello spazio che le separa.</p>
+          <h3>L'attesa dell'evento</h3>
+          <p>La prima strofa si apre con qualcuno che aspetta “the next event in life” mentre una seconda voce risponde che ormai è tardi. Nessuno sa come misurare quell'evento. Resta “latent and unknown” e del suo “secret temporal role” si può solo attendere la comparsa. Le domande che chiudono la strofa (“How will we know it's true? And when it is really time to go?”) restano senza risposta.</p>
+          <p>La seconda strofa rifà la scena a segni invertiti. L'attesa è finita: “the right time is now”. L'ignoto resta ignoto, ma chi parla agisce lo stesso, e la domanda diventa un'affermazione: “Now we do know it's true”. Il “secret temporal role” si trasforma in “temporal bow”, un inchino del tempo: per un istante il tempo si piega invece di correre e basta.</p>
+          <h3>La traccia emergente</h3>
+          <p>Nel ritornello chi canta cerca “the emergent trace” servendosi dei “dead times”. Nei sistemi complessi il comportamento collettivo nasce da interazioni che non si leggono in nessun singolo componente, e la ricerca parte spesso da una traccia così: un segnale che ritorna, un'anomalia che nessuno aveva chiesto. I tempi morti, le pause in cui sembra non succedere niente, sono il posto dove si può seguirla.</p>
+          <h3>Il treno impazzito</h3>
+          <p>“Risky patterns in a crazy train”: uno schema descrive ciò che è già accaduto senza dire dove si sta andando, e un modello scambiato per il binario finisce per decidere la corsa al posto di chi viaggia. Il bridge va nella stessa direzione. Chiede una legge che impedisca ai crolli di restare “untold”, un racconto del perché le cose cedono, e poi rifiuta la semplice obbedienza: “Obey, it's a shame. Diverge from the same old world.”</p>
+          <h3>Bere dalla pioggia</h3>
+          <p>L'ultimo ritornello si allunga di tre versi e chiude con “Rather than being obsessed with what we do anticipate, we should learn to drink from the rain”. La pioggia arriva con i suoi tempi. Per berla servono attenzione e la disponibilità a stare dalla parte di chi riceve, invece che di chi controlla.</p>
+          <p>Nella canzone niente è schierato contro i modelli o le previsioni. A essere messa in discussione è l'abitudine di guardare il mondo solo per anticiparlo, e quanto costa in curiosità. Fermare la corsa è un modo di continuare a cercare.</p>
+          <p class="end">Stop the race, keep searching.</p>
+        </div>
+      </details>
+      <details class="acc">
+        <summary>Sulla copertina</summary>
+        <div class="acc-body">
+          <p class="lead">Un Saturno di pietra che divora il figlio, un bambino alato con dei pianeti tra le braccia e, in mezzo, un palloncino rosso.</p>
+          <p>La copertina nasce da un vecchio accoppiamento di idee. A sinistra Kronos, il Saturno dei Romani, afferra un neonato e lo divora, sul modello del <em>Saturno che divora un figlio</em> di Goya, dipinto tra il 1819 e il 1823 su una parete della casa dell'artista fuori Madrid. A destra, seduto su una nuvola al tramonto, un bambino alato, Kairos, stringe un mucchio di sfere: un gigante gassoso a fasce, un pianeta rosso, una Terra, qualche piccola luna. Tra i due sale un palloncino rosso, con il nastro che si arriccia.</p>
+          <p>Il muro in cui Kronos è scolpito è un reticolo di tessere nere e a specchio, come una griglia di pixel che si stacca, e gli specchi riflettono la stessa luce dorata del cielo.</p>
+          <h3>Kronos, il tempo che consuma</h3>
+          <p>Il tempo cronologico mette in ordine gli eventi, misura la durata e dà una cornice alla vita. Consuma anche tutto ciò che ha misurato. Quando ogni ora viene giudicata per resa e velocità, somiglia al dio di Goya, già con la mano tesa verso il prossimo. La corsa non ha un traguardo: c'è sempre un'altra scadenza, un'altra previsione.</p>
+          <h3>Kairos, il momento giusto</h3>
+          <p>Per i Greci il Kairos era l'occasione opportuna: conta il quando più del quanto. Un'osservazione può cambiare la direzione di una ricerca, un incontro quella di una vita. Il Kairos non si convoca, si riconosce quando arriva, ed è forse per questo che nell'immagine è piccolo e fragile. La seconda strofa lo dice senza giri: “the right time is now”.</p>
+          <h3>I mondi tra le braccia</h3>
+          <p>Le sfere rimandano alla molteplicità del reale: sistemi, relazioni e traiettorie che nessun punto di vista da solo riesce a coprire. Un bambino che le stringe suggerisce un modo di stare davanti alla complessità: tenerle vicino, guardarle, senza pretendere di stringerle in un'unica formula o di prevedere ogni esito. È l'atteggiamento di chi cerca una “emergent trace”.</p>
+          <h3>Il palloncino rosso</h3>
+          <p>Leggero, rosso, fatto per durare poco, sale verso il sole. È lo stesso palloncino che fluttua accanto al logo degli Alias4us. Non risolve il conflitto tra i due tempi, ma mostra che un altro modo di stare al mondo resta aperto. La fragilità fa parte del suo valore: una cosa può essere passeggera e contare altrettanto.</p>
+          <h3>Una torre di pixel</h3>
+          <p>Le nostre giornate sono sempre più scandite da sistemi digitali che accelerano comunicazioni, decisioni e produzione di informazioni. Ci permettono di elaborare più dati e di anticipare più eventi, e moltiplicano anche le richieste di velocità. La torre di specchi porta il mito nel presente: un Kronos che promette di farci risparmiare tempo e intanto ci chiede di correre più forte. Resta aperta la domanda se gli strumenti rimangano al servizio della curiosità o se la velocità diventi lo scopo.</p>
+          <p>Il legame con la canzone è concettuale più che letterale. Il testo chiede curiosità al posto dell'ansia di anticipare, e la copertina porta la stessa idea nel mito. Kronos e Kairos non sono nemici: il tempo dell'orologio è il terreno in cui nascono i momenti giusti, e il guaio comincia quando conta solo l'orologio.</p>
+        </div>
+      </details>
+    </div>
+
+    <h2 class="lyrics-h">Lyrics</h2>
+
+    <div class="lyrics"><p class="stanza">I've been waiting for the next event in life
+You'd say: too late for now
+Not sure about how to measure it
+Mostly latent and unknown
+I will wait for its secret temporal role
+How will we know it's true?
+And when it is really time to go?
+(As you have already said)</p>
+<p class="stanza">Surely there is a law
+To prevent collapses from being untold
+Obey, it's a shame
+Diverge from the same old world
+You are the only government of history I know</p>
+<p class="stanza">I've been searching for the emergent trace
+Using dead times, we will stop the chase
+Risky patterns in a crazy train
+The only right move is to stop the race</p>
+<p class="stanza">I haven't been waiting for the next event in life
+I would say: the right time is now
+Still not sure about how to measure it
+Fully latent and unknown
+I will wait for the next temporal bow
+Now we do know it's true
+And then it's always time to go
+(As you have already said)</p>
+<p class="stanza">Surely there is a law
+To prevent collapses from being untold
+Obey, it's a shame
+Diverge from the same old world
+You are the only government of history I know</p>
+<p class="stanza">I've been searching for the emergent trace
+Using dead times, we will stop the chase
+Risky patterns in a crazy train
+The only right move is to stop the race
+The final good taught from this place
+Rather than being obsessed with what we do anticipate
+We should learn to drink from the rain</p></div>
+  </main>
+
+  <nav class="songnav">
+    <a href="index.html#brani"><span class="i18n" data-lang="en">← All songs</span><span class="i18n" data-lang="it" hidden>← Tutti i brani</span></a>
+    <a href="right-goodbye.html">Right Goodbye →</a>
+  </nav>
+
+  <footer>
+    <p>Lyrics, music and arrangements by FX &amp; Fenni.</p>
+    <p>© <span id="anno">2026</span> Alias4us. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script>
+document.getElementById('anno').textContent=new Date().getFullYear();
+(function(){
+  var buttons=document.querySelectorAll('.lang-btn');
+  var blocks=document.querySelectorAll('.i18n');
+  function setLang(lang){
+    document.documentElement.lang=lang;
+    buttons.forEach(function(b){b.classList.toggle('is-active',b.getAttribute('data-lang')===lang);});
+    blocks.forEach(function(el){el.hidden=el.getAttribute('data-lang')!==lang;});
+  }
+  function detectLang(){
+    try{
+      var saved=sessionStorage.getItem('a4u-lang');
+      if(saved==='it'||saved==='en') return saved;
+    }catch(e){}
+    var langs=navigator.languages||[navigator.language||'en'];
+    for(var i=0;i<langs.length;i++){
+      if(langs[i].toLowerCase().indexOf('it')===0) return 'it';
+    }
+    return 'en';
+  }
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var l=btn.getAttribute('data-lang');
+      setLang(l);
+      try{sessionStorage.setItem('a4u-lang',l);}catch(e){}
+    });
+  });
+  setLang(detectLang());
+})();
+</script>
+</body>
+</html>
