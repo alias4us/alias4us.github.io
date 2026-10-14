@@ -301,8 +301,22 @@ footer p{margin:0 0 4px}
 #newrel-at-my-side{
   position:relative;overflow:hidden;
 }
-#newrel-right-goodbye{
+#newrel-stop{
   position:relative;overflow:hidden;
+}
+/* ---------- sistema solare (anteprima Stop the Race) ---------- */
+.orrery{display:block;max-width:420px;margin-top:16px;pointer-events:none}
+.orrery svg{display:block;width:100%;height:auto;overflow:visible}
+.orrery .rings circle{fill:none;stroke:var(--line);stroke-width:1}
+.orrery .orb{
+  transform-box:view-box;transform-origin:0 0;
+  animation:orb-spin linear infinite;
+}
+.orrery .unorb{transform-box:view-box;transform-origin:0 0;animation:orb-unspin linear infinite}
+@keyframes orb-spin{to{transform:rotate(360deg)}}
+@keyframes orb-unspin{to{transform:rotate(-360deg)}}
+@media (prefers-reduced-motion:reduce){.orrery .orb,.orrery .unorb{animation-play-state:paused}}
+@media (max-width:560px){
 }
 
 /* ---------- trenino: Right Goodbye (avanti e indietro) ---------- */
@@ -310,15 +324,21 @@ footer p{margin:0 0 4px}
   position:relative;display:block;height:34px;margin-top:18px;
   pointer-events:none;
 }
+.track .train-lane{flex:1 1 0;min-width:0;height:26px;margin:0;align-self:center}
+#track-goodbye .t-title{flex:0 0 auto}
+#track-goodbye .t-meta{order:3}
 .train-lane::after{
   content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
   border-top:1px solid var(--line);
   background:repeating-linear-gradient(90deg,var(--line) 0 2px,transparent 2px 12px);
 }
 .train-fx{
-  position:absolute;bottom:3px;left:0;width:96px;height:30px;
+  --tw:96px;
+  position:absolute;bottom:3px;left:0;width:var(--tw);height:30px;
   animation:train-run 14s infinite;
 }
+.train-fx.train-row{--tw:48px;height:23px;bottom:2px}
+.train-fx.train-row .face{transform-origin:61px 15px}
 .train-fx .face{
   transform-box:view-box;transform-origin:48px 15px;
   animation:train-face 14s infinite;
@@ -330,8 +350,8 @@ footer p{margin:0 0 4px}
 .train-fx .puff.p2{animation-delay:.75s}
 @keyframes train-run{
   0%{left:0;animation-timing-function:ease-in-out}
-  42%{left:calc(100% - 96px)}
-  50%{left:calc(100% - 96px);animation-timing-function:ease-in-out}
+  42%{left:calc(100% - var(--tw,96px))}
+  50%{left:calc(100% - var(--tw,96px));animation-timing-function:ease-in-out}
   92%{left:0}
   100%{left:0}
 }
@@ -346,7 +366,7 @@ footer p{margin:0 0 4px}
   100%{opacity:0;transform:translate(-5px,-10px) scale(1.6)}
 }
 @media (prefers-reduced-motion:reduce){
-  .train-fx{animation:none;left:calc(50% - 48px)}
+  .train-fx{animation:none;left:calc(50% - var(--tw,96px)/2)}
   .train-fx .face,.train-fx .puff{animation:none}
   .train-fx .puff{opacity:.3}
 }
@@ -575,35 +595,16 @@ footer p{margin:0 0 4px}
  <section id="uscita">
     <h2>New release</h2>
 
-    <a class="newrel" id="newrel-right-goodbye" href="right-goodbye.html">
-      <span class="newrel-flag">Out now</span>
-      <span class="newrel-title">Right Goodbye</span>
-      <span class="newrel-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
-      <span class="train-lane" aria-hidden="true">
-        <svg class="train-fx" viewBox="0 0 96 30">
-          <g class="face">
-            <!-- vagoni -->
-            <rect x="2" y="9" width="26" height="12" rx="1.5" fill="none" stroke="var(--chrome)" stroke-width="1.4"/>
-            <rect x="32" y="9" width="26" height="12" rx="1.5" fill="none" stroke="var(--chrome)" stroke-width="1.4"/>
-            <rect x="6" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
-            <rect x="14" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
-            <rect x="36" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
-            <rect x="44" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
-            <!-- ganci -->
-            <line x1="28" y1="18" x2="32" y2="18" stroke="var(--chrome)" stroke-width="1.4"/>
-            <line x1="58" y1="18" x2="62" y2="18" stroke="var(--chrome)" stroke-width="1.4"/>
-            <!-- locomotiva -->
-            <path d="M62 21 V8 H70 V4 H76 V8 H90 V21 Z" fill="none" stroke="var(--chrome)" stroke-width="1.4" stroke-linejoin="round"/>
-            <path d="M70 8 V4 H76 V8" fill="var(--red)" opacity=".55"/>
-            <rect x="80" y="2" width="4" height="6" fill="none" stroke="var(--chrome)" stroke-width="1.4"/>
-            <circle class="puff" cx="82" cy="1" r="2.2" fill="var(--chrome)"/>
-            <circle class="puff p2" cx="82" cy="1" r="2.2" fill="var(--chrome)"/>
-            <!-- ruote -->
-            <circle class="wheel" cx="11" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
-            <circle class="wheel" cx="45" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
-            <circle class="wheel" cx="68" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
-            <circle class="wheel" cx="82" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
-          </g>
+    <a class="newrel" id="newrel-stop" href="stop-the-race.html">
+      <span class="newrel-flag">Preview · 12 November 2026</span>
+      <span class="newrel-title">Stop the Race</span>
+      <span class="newrel-meta">lyrics &amp; artwork <span aria-hidden="true">→</span></span>
+      <span class="orrery" aria-hidden="true">
+        <svg viewBox="0 0 400 96">
+          <defs><radialGradient id="sunglow"><stop offset="0" stop-color="#F6CF5A" stop-opacity=".55"/><stop offset="1" stop-color="#F6CF5A" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="200" cy="48" r="22" fill="url(#sunglow)"/>
+          <g transform="translate(200 48) scale(1 0.24)"><g class="rings"><circle r="20" vector-effect="non-scaling-stroke"/><circle r="29" vector-effect="non-scaling-stroke"/><circle r="39" vector-effect="non-scaling-stroke"/><circle r="50" vector-effect="non-scaling-stroke"/><circle r="72" vector-effect="non-scaling-stroke"/><circle r="100" vector-effect="non-scaling-stroke"/><circle r="134" vector-effect="non-scaling-stroke"/><circle r="170" vector-effect="non-scaling-stroke"/></g><g class="orb" style="animation-duration:2.6s;animation-delay:-0.26s"><g transform="translate(20 0)"><g class="unorb" style="animation-duration:2.6s;animation-delay:-0.26s"><ellipse rx="1.5" ry="6.25" fill="#9AA5B1"/></g></g></g><g class="orb" style="animation-duration:4.5s;animation-delay:-2.48s"><g transform="translate(29 0)"><g class="unorb" style="animation-duration:4.5s;animation-delay:-2.48s"><ellipse rx="2.3" ry="9.58" fill="#D9C08A"/></g></g></g><g class="orb" style="animation-duration:7.1s;animation-delay:-2.13s"><g transform="translate(39 0)"><g class="unorb" style="animation-duration:7.1s;animation-delay:-2.13s"><ellipse rx="2.5" ry="10.42" fill="#4A8FD4"/></g></g></g><g class="orb" style="animation-duration:10.3s;animation-delay:-8.24s"><g transform="translate(50 0)"><g class="unorb" style="animation-duration:10.3s;animation-delay:-8.24s"><ellipse rx="1.9" ry="7.92" fill="var(--red)"/></g></g></g><g class="orb" style="animation-duration:17.8s;animation-delay:-8.01s"><g transform="translate(72 0)"><g class="unorb" style="animation-duration:17.8s;animation-delay:-8.01s"><ellipse rx="4.6" ry="19.17" fill="#D8A26A"/></g></g></g><g class="orb" style="animation-duration:29.1s;animation-delay:-1.46s"><g transform="translate(100 0)"><g class="unorb" style="animation-duration:29.1s;animation-delay:-1.46s"><ellipse rx="4.0" ry="16.67" fill="#E0CF9A"/></g></g></g><g class="orb" style="animation-duration:45.1s;animation-delay:-29.32s"><g transform="translate(134 0)"><g class="unorb" style="animation-duration:45.1s;animation-delay:-29.32s"><ellipse rx="3.0" ry="12.5" fill="#8FD3D6"/></g></g></g><g class="orb" style="animation-duration:64.4s;animation-delay:-16.1s"><g transform="translate(170 0)"><g class="unorb" style="animation-duration:64.4s;animation-delay:-16.1s"><ellipse rx="3.0" ry="12.5" fill="#4F6FD8"/></g></g></g></g>
+          <circle cx="200" cy="48" r="5.5" fill="#F6CF5A"/>
         </svg>
       </span>
     </a>
@@ -611,6 +612,29 @@ footer p{margin:0 0 4px}
 
   <section id="brani">
     <h2>Songs</h2>
+
+    <a class="track" id="track-goodbye" href="right-goodbye.html">
+      <span class="t-title">Right Goodbye</span>
+      <span class="t-meta"><svg class="play-icon" width="11" height="11" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5 17 10 4 17.5Z" fill="var(--chrome)"/></svg>listen</span>
+      <span class="train-lane" aria-hidden="true">
+        <svg class="train-fx train-row" viewBox="30 0 62 30">
+          <g class="face">
+            <rect x="32" y="9" width="26" height="12" rx="1.5" fill="none" stroke="var(--chrome)" stroke-width="1.4"/>
+            <rect x="36" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
+            <rect x="44" y="12" width="5" height="4" fill="var(--red)" opacity=".55"/>
+            <line x1="58" y1="18" x2="62" y2="18" stroke="var(--chrome)" stroke-width="1.4"/>
+            <path d="M62 21 V8 H70 V4 H76 V8 H90 V21 Z" fill="none" stroke="var(--chrome)" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M70 8 V4 H76 V8" fill="var(--red)" opacity=".55"/>
+            <rect x="80" y="2" width="4" height="6" fill="none" stroke="var(--chrome)" stroke-width="1.4"/>
+            <circle class="puff" cx="82" cy="1" r="2.2" fill="var(--chrome)"/>
+            <circle class="puff p2" cx="82" cy="1" r="2.2" fill="var(--chrome)"/>
+            <circle class="wheel" cx="45" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
+            <circle class="wheel" cx="68" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
+            <circle class="wheel" cx="82" cy="25" r="3.2" fill="var(--paper)" stroke="var(--chrome)" stroke-width="1.2"/>
+          </g>
+        </svg>
+      </span>
+    </a>
 
     <a class="track" id="track-disgrace" href="call-me-a-disgrace.html">
       <span class="t-title">Call Me A Disgrace</span>
