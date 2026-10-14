@@ -8,6 +8,12 @@
   </url>
 
   <url>
+    <loc>https://alias4us.github.io/stop-the-race.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://alias4us.github.io/right-goodbye.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -47,6 +53,12 @@
     <loc>https://alias4us.github.io/process.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://alias4us.github.io/technical-process.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <url>
